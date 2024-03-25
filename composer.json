@@ -1,0 +1,29 @@
+{
+    "name": "migliori/power-lite-pdo",
+    "description": "PowerLitePdo is a PDO wrapper that provides a simple and powerful way to interact with a database.",
+    "type": "library",
+    "version": "1.0.0",
+    "require": {
+        "php": ">=7.4",
+        "php-di/php-di": "6.4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.4",
+        "phpstan/phpstan": "^1.10",
+        "rector/rector": "^1.0"
+    },
+    "license": "GPL-3.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "Migliori\\PowerLitePdo\\": "src/",
+            "files\\": [
+                "src/bootstrap.php"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "Gilles Migliori"
+        }
+    ]
+}
