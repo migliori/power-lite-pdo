@@ -20,7 +20,7 @@ class Parameters
      *
      * @var int|null|string $limit The limit value for the query.
      */
-    private mixed $limit = null;
+    private $limit = null;
 
     /**
      * Add a parameter to the query.
@@ -30,7 +30,7 @@ class Parameters
      * @return $this The current instance of the Parameters object.
      * @throws ParametersException If the property does not exist.
      */
-    public function set(string $name, mixed $value): self
+    public function set(string $name, $value): self
     {
         // if the property doesn't exist throw an exception
         if (!property_exists($this, $name)) {
@@ -60,7 +60,7 @@ class Parameters
      * @param string $name The name of the parameter.
      * @return mixed The value of the parameter.
      */
-    public function get(string $name): mixed
+    public function get(string $name)
     {
         if (!property_exists($this, $name)) {
             throw new Exception(sprintf('The property %s does not exist', $name));

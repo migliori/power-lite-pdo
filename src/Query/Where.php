@@ -35,7 +35,7 @@ class Where
      *                    $where[] = 'first_name IS NOT NULL';
      *                    $where['some_value <>'] = 'text';
      */
-    public function set(mixed $where = ''): void
+    public function set($where = ''): void
     {
         // If an array was passed in...
         if (is_array($where) && $where !== []) {

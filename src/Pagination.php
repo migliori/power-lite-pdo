@@ -91,17 +91,17 @@ class Pagination
      * @param array<int|string, mixed>|string $where The WHERE clause. Can be a string or an array of conditions.
      *                     If it's an array, the conditions will be joined with AND.
      * @param array<string, bool|int|string> $parameters An associative array of parameter names and values.
-     * @param ?string $debug null, off, on or silent.
-     *              'off':    the production mode.
-     *              'on':     The query is displayed.
+     * @param bool|string $debug false, true or silent.
+     *              false:    the production mode.
+     *              true:     The query is displayed.
      *              'silent': The query is registered then can be displayed using the getDebug() method.
      */
     public function select(
         string $from,
-        mixed $fields,
-        mixed $where = [],
+        $fields,
+        $where = [],
         array $parameters = [],
-        ?string $debug = null
+        $debug = false
     ): self {
         // Get the total number of records
         try {
@@ -149,7 +149,7 @@ class Pagination
      * @param int $fetch_parameters The PDO fetch style record options
      * @return mixed The next row or false if we reached the end
      */
-    public function fetch(int $fetch_parameters = PDO::FETCH_OBJ): mixed
+    public function fetch(int $fetch_parameters = PDO::FETCH_OBJ)
     {
         return $this->db->fetch($fetch_parameters);
     }

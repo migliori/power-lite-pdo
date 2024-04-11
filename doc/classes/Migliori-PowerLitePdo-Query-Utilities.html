@@ -169,7 +169,7 @@
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd>Interpolates the query by replacing placeholders with their corresponding values.</dd>
+<dd>Interpolates the given query string with the provided placeholders.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Migliori-PowerLitePdo-Query-Utilities.html#method_isSqlAutoCommit">isSqlAutoCommit()</a>
@@ -260,7 +260,7 @@ https://dev.mysql.com/doc/refman/5.7/en/implicit-commit.html</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/Utilities.php"><a href="files/src-query-utilities.html"><abbr title="src/Query/Utilities.php">Utilities.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">58</span>
+    <span class="phpdocumentor-element-found-in__line">49</span>
 
     </aside>
 
@@ -312,15 +312,15 @@ https://dev.mysql.com/doc/refman/5.7/en/implicit-commit.html</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/Utilities.php"><a href="files/src-query-utilities.html"><abbr title="src/Query/Utilities.php">Utilities.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">78</span>
+    <span class="phpdocumentor-element-found-in__line">73</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Interpolates the query by replacing placeholders with their corresponding values.</p>
+        <p class="phpdocumentor-summary">Interpolates the given query string with the provided placeholders.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">interpolateQuery</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$queryString</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$placeholders</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">interpolateQuery</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$queryString</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;int|string, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$placeholders</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -332,16 +332,16 @@ https://dev.mysql.com/doc/refman/5.7/en/implicit-commit.html</dd>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The SQL query with placeholders.</p>
+                    <section class="phpdocumentor-description"><p>The query string to be interpolated.</p>
 </section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$placeholders</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string, mixed&gt;</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;int|string, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>An array of parameter values to be interpolated into the query.</p>
+                    <section class="phpdocumentor-description"><p>An associative array of placeholders and their corresponding values.</p>
 </section>
 
             </dd>
@@ -353,7 +353,7 @@ https://dev.mysql.com/doc/refman/5.7/en/implicit-commit.html</dd>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>The interpolated query.</p>
+                <section class="phpdocumentor-description"><p>The interpolated query string.</p>
 </section>
 
             </section>
@@ -373,7 +373,7 @@ https://dev.mysql.com/doc/refman/5.7/en/implicit-commit.html</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/Utilities.php"><a href="files/src-query-utilities.html"><abbr title="src/Query/Utilities.php">Utilities.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">117</span>
+    <span class="phpdocumentor-element-found-in__line">118</span>
 
     </aside>
 

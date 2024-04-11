@@ -80,3 +80,4 @@ $RECYCLE.BIN/
 /src/Db-BACKUP.php
 .vscode
 phpstan.neon
+markdown-method-doc-template.md

@@ -106,10 +106,10 @@ Search.appendIndex(
             "summary": "Deletes\u0020a\u0020record\u0020from\u0020the\u0020database\u0020table.",
             "url": "classes/Migliori-PowerLitePdo-Db.html#method_delete"
         },                {
-            "fqsen": "\\Migliori\\PowerLitePdo\\Db\u003A\u003AconvertQueryToSimpleArray\u0028\u0029",
-            "name": "convertQueryToSimpleArray",
+            "fqsen": "\\Migliori\\PowerLitePdo\\Db\u003A\u003AconvertToSimpleArray\u0028\u0029",
+            "name": "convertToSimpleArray",
             "summary": "Converts\u0020a\u0020Query\u0028\u0029\u0020or\u0020Select\u0028\u0029\u0020array\u0020of\u0020records\u0020into\u0020a\u0020simple\u0020array\nusing\u0020only\u0020one\u0020column\u0020or\u0020an\u0020associative\u0020array\u0020using\u0020another\u0020column\u0020as\u0020a\u0020key.",
-            "url": "classes/Migliori-PowerLitePdo-Db.html#method_convertQueryToSimpleArray"
+            "url": "classes/Migliori-PowerLitePdo-Db.html#method_convertToSimpleArray"
         },                {
             "fqsen": "\\Migliori\\PowerLitePdo\\Db\u003A\u003AgetColumns\u0028\u0029",
             "name": "getColumns",
@@ -143,12 +143,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Migliori\\PowerLitePdo\\Db\u003A\u003Afetch\u0028\u0029",
             "name": "fetch",
-            "summary": "Fetches\u0020the\u0020next\u0020row\u0020from\u0020a\u0020result\u0020set\u0020and\u0020returns\u0020it\u0020according\u0020to\u0020the\u0020\u0024fetch_parameters\u0020format",
+            "summary": "Fetches\u0020the\u0020next\u0020row\u0020from\u0020a\u0020result\u0020set\u0020and\u0020returns\u0020it\u0020according\u0020to\u0020the\u0020\u0024fetchParameters\u0020format",
             "url": "classes/Migliori-PowerLitePdo-Db.html#method_fetch"
         },                {
             "fqsen": "\\Migliori\\PowerLitePdo\\Db\u003A\u003AfetchAll\u0028\u0029",
             "name": "fetchAll",
-            "summary": "Fetches\u0020all\u0020rows\u0020from\u0020a\u0020result\u0020set\u0020and\u0020return\u0020them\u0020according\u0020to\u0020the\u0020\u0024fetch_parameters\u0020format",
+            "summary": "Fetches\u0020all\u0020rows\u0020from\u0020a\u0020result\u0020set\u0020and\u0020return\u0020them\u0020according\u0020to\u0020the\u0020\u0024fetchParameters\u0020format",
             "url": "classes/Migliori-PowerLitePdo-Db.html#method_fetchAll"
         },                {
             "fqsen": "\\Migliori\\PowerLitePdo\\Db\u003A\u003AgetHTML\u0028\u0029",
@@ -641,10 +641,10 @@ Search.appendIndex(
             "summary": "Database\u0020connection\u0020object.",
             "url": "classes/Migliori-PowerLitePdo-Pagination.html#property_db"
         },                {
-            "fqsen": "\\Migliori\\PowerLitePdo\\Pagination\u003A\u003A\u0024options",
-            "name": "options",
+            "fqsen": "\\Migliori\\PowerLitePdo\\Pagination\u003A\u003A\u0024paginationOptions",
+            "name": "paginationOptions",
             "summary": "Options",
-            "url": "classes/Migliori-PowerLitePdo-Pagination.html#property_options"
+            "url": "classes/Migliori-PowerLitePdo-Pagination.html#property_paginationOptions"
         },                {
             "fqsen": "\\Migliori\\PowerLitePdo\\Pagination\u003A\u003A\u0024view",
             "name": "view",
@@ -1183,7 +1183,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Migliori\\PowerLitePdo\\Query\\Utilities\u003A\u003AinterpolateQuery\u0028\u0029",
             "name": "interpolateQuery",
-            "summary": "Interpolates\u0020the\u0020query\u0020by\u0020replacing\u0020placeholders\u0020with\u0020their\u0020corresponding\u0020values.",
+            "summary": "Interpolates\u0020the\u0020given\u0020query\u0020string\u0020with\u0020the\u0020provided\u0020placeholders.",
             "url": "classes/Migliori-PowerLitePdo-Query-Utilities.html#method_interpolateQuery"
         },                {
             "fqsen": "\\Migliori\\PowerLitePdo\\Query\\Utilities\u003A\u003AisSqlAutoCommit\u0028\u0029",
@@ -1251,10 +1251,10 @@ Search.appendIndex(
             "summary": "Fetches\u0020all\u0020rows\u0020from\u0020the\u0020result\u0020set.",
             "url": "classes/Migliori-PowerLitePdo-Result-Result.html#method_fetchAll"
         },                {
-            "fqsen": "\\Migliori\\PowerLitePdo\\Result\\Result\u003A\u003A\u0024resultSet",
-            "name": "resultSet",
+            "fqsen": "\\Migliori\\PowerLitePdo\\Result\\Result\u003A\u003A\u0024pdoStatement",
+            "name": "pdoStatement",
             "summary": "",
-            "url": "classes/Migliori-PowerLitePdo-Result-Result.html#property_resultSet"
+            "url": "classes/Migliori-PowerLitePdo-Result-Result.html#property_pdoStatement"
         },                {
             "fqsen": "\\Migliori\\PowerLitePdo\\View\\View",
             "name": "View",

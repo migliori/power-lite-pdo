@@ -30,14 +30,13 @@
         use Migliori\PowerLitePdo\Query\QueryBuilder;
 
         $container = require_once __DIR__ . '/../src/bootstrap.php';
-
         $queryBuilder = $container->get(QueryBuilder::class);
 
-        $queryBuilder->select(['id', 'username', 'email'])->from('users')->where(['status' => 'active'])->execute();
+        $queryBuilder->select(['id', 'name', 'email'])->from('users')->where(['status' => 'active'])->execute();
 
         $records = [];
         while ($record = $queryBuilder->fetch()) {
-            $records[] = $record->id . ', ' . $record->username . ', ' . $record->email;
+            $records[] = $record->id . ', ' . $record->name . ', ' . $record->email;
         }
         ?>
 
@@ -49,11 +48,11 @@ $container = require_once __DIR__ . '/../src/bootstrap.php';
 
 $queryBuilder = $container->get(QueryBuilder::class);
 
-$queryBuilder->select(['id', 'username', 'email'])->from('users')->where(['status' => 'active'])->execute();
+$queryBuilder->select(['id', 'name', 'email'])->from('users')->where(['status' => 'active'])->execute();
 
 $records = [];
 while ($record = $db->fetch()) {
-    $records[] = $record->id . ', ' . $record->username . ', ' . $record->email;
+    $records[] = $record->id . ', ' . $record->name . ', ' . $record->email;
 }</code></pre>
 
         <button class="btn btn-primary dropdown-toggle mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#phpOutput" aria-expanded="false" aria-controls="phpOutput">

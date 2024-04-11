@@ -86,14 +86,15 @@ class Db
      * Executes a SQL query on the database.
      *
      * @param string $sql The SQL query to execute.
-     * @param array<string, mixed> $placeholders An associative array of placeholders and their values.
+     * @param array<string, mixed> $placeholders An indexed or associative array to store the placeholders used in the query.
+     * @param bool|string $debug false, true or silent.
      * @return bool|int Returns true or false for a SELECT query, returns the number of affected rows for other statements or false if there was an error.
      */
     public function query(
         string $sql,
         array $placeholders = [],
-        ?string $debug = null
-    ): mixed {
+        $debug = false
+    ) {
         return $this->queryBuilder
             ->query($sql)
             ->placeholders($placeholders)
@@ -105,43 +106,43 @@ class Db
      * Executes a SQL query using PDO and returns one row
      *
      * @param string $sql The SQL query to execute.
-     * @param array<string, mixed> $placeholders An associative array of placeholders and their values.
-     * @param int $fetch_parameters PDO fetch style record options
-     * @param ?string $debug null, off, on or silent.
-     *              'off':    the production mode.
-     *              'on':     The query is displayed.
+     * @param array<string, mixed> $placeholders An indexed or associative array to store the placeholders used in the query.
+     * @param int $fetchParameters PDO fetch style record options
+     * @param bool|string $debug false, true or 'silent'.
+     *              false:    the production mode.
+     *              true:     The query is displayed.
      *              'silent': The query is registered then can be displayed using the getDebug() method.
      * @return mixed Array or object with values if success otherwise false
      */
     public function queryRow(
         string $sql,
         array $placeholders = [],
-        int $fetch_parameters = PDO::FETCH_OBJ,
-        ?string $debug = null
-    ): mixed {
+        int $fetchParameters = PDO::FETCH_OBJ,
+        $debug = false
+    ) {
         // It's better on resources to add LIMIT 1 to the end of your SQL
         // statement if there are multiple rows that will be returned
         $this->query($sql, $placeholders, $debug);
 
-        return $this->fetch($fetch_parameters);
+        return $this->fetch($fetchParameters);
     }
 
     /**
      * Executes a SQL query using PDO and returns a single value only
      *
-     * @param string $sql The SQL query to execute.
-     * @param array<string, mixed> $placeholders An associative array of placeholders and their values.
-     * @param ?string $debug null, off, on or silent.
-     *              'off':    the production mode.
-     *              'on':     The query is displayed.
+     * @param string $sql The SQL query to execute.A
+     * @param array<string, mixed> $placeholders An indexed or associative array to store the placeholders used in the query.
+     * @param bool|string $debug false, true or 'silent'.
+     *              false:    the production mode.
+     *              true:     The query is displayed.
      *              'silent': The query is registered then can be displayed using the getDebug() method.
      * @return mixed A returned value from the database if success otherwise false
      */
     public function queryValue(
         string $sql,
         array $placeholders = [],
-        ?string $debug = null
-    ): mixed {
+        $debug = false
+    ) {
         // It's better on resources to add LIMIT 1 to the end of your SQL
         // if there are multiple rows that will be returned
         $results = $this->queryRow($sql, $placeholders, PDO::FETCH_NUM, $debug);
@@ -165,19 +166,19 @@ class Db
      * @param array<int|string, mixed>|string $where The WHERE clause. Can be a string or an array of conditions.
      *                     If it's an array, the conditions will be joined with AND.
      * @param array<string, bool|int|string> $parameters An associative array of parameter names and values.
-     * @param ?string $debug null, off, on or silent.
-     *              'off':    the production mode.
-     *              'on':     The query is displayed.
+     * @param bool|string $debug false, true or 'silent'.
+     *              false:    the production mode.
+     *              true:     The query is displayed.
      *              'silent': The query is registered then can be displayed using the getDebug() method.
      * @return bool|int True if the query was successful, false otherwise.
      */
     public function select(
         string $from,
-        mixed $fields,
-        mixed $where = [],
+        $fields,
+        $where = [],
         array $parameters = [],
-        ?string $debug = null
-    ): mixed {
+        $debug = false
+    ) {
         return $this->queryBuilder
             ->select($fields)
             ->from($from)
@@ -196,19 +197,19 @@ class Db
      * @param array<int|string, mixed>|string $where The WHERE clause. Can be a string or an array of conditions.
      *                     If it's an array, the conditions will be joined with AND.
      * @param array<string, bool|int|string> $parameters An associative array of parameter names and values.
-     * @param ?string $debug null, off, on or silent.
-     *              'off':    the production mode.
-     *              'on':     The query is displayed.
+     * @param bool|string $debug false, true or 'silent'.
+     *              false:    the production mode.
+     *              true:     The query is displayed.
      *              'silent': The query is registered then can be displayed using the getDebug() method.
      * @return mixed The record row or false if no record has been found
      */
     public function selectCount(
         string $from,
-        mixed $fields = ['*' => 'rowsCount'],
-        mixed $where = [],
+        $fields = ['*' => 'rowsCount'],
+        $where = [],
         array $parameters = [],
-        ?string $debug = null
-    ): mixed {
+        $debug = false
+    ) {
         $countFields = [];
         // If the fields are in an array
         if (is_array($fields)) {
@@ -243,23 +244,23 @@ class Db
      * @param string|array<string> $fields The columns to select. Can be a string or an array of strings.
      * @param array<int|string, mixed>|string $where The WHERE clause. Can be a string or an array of conditions.
      *                     If it's an array, the conditions will be joined with AND.
-     * @param int $fetch_parameters PDO fetch style record options
-     * @param ?string $debug null, off, on or silent.
-     *              'off':    the production mode.
-     *              'on':     The query is displayed.
+     * @param int $fetchParameters PDO fetch style record options
+     * @param bool|string $debug false, true or 'silent'.
+     *              false:    the production mode.
+     *              true:     The query is displayed.
      *              'silent': The query is registered then can be displayed using the getDebug() method.
      * @return mixed Array or object with values if success otherwise false
      */
     public function selectRow(
         string $from,
-        mixed $fields = '*',
-        mixed $where = [],
-        int $fetch_parameters = PDO::FETCH_OBJ,
-        ?string $debug = null
-    ): mixed {
+        $fields = '*',
+        $where = [],
+        int $fetchParameters = PDO::FETCH_OBJ,
+        $debug = false
+    ) {
         $this->select($from, $fields, $where, ['limit' => 1], $debug);
 
-        return $this->fetch($fetch_parameters);
+        return $this->fetch($fetchParameters);
     }
 
     /**
@@ -270,18 +271,18 @@ class Db
      * @param string|array<string> $field The columns to select. Can be a string or an array of strings.
      * @param array<int|string, mixed>|string $where The WHERE clause. Can be a string or an array of conditions.
      *                     If it's an array, the conditions will be joined with AND.
-     * @param ?string $debug null, off, on or silent.
-     *              'off':    the production mode.
-     *              'on':     The query is displayed.
+     * @param bool|string $debug false, true or 'silent'.
+     *              false:    the production mode.
+     *              true:     The query is displayed.
      *              'silent': The query is registered then can be displayed using the getDebug() method.
      * @return mixed A returned value from the database if success otherwise false
      */
     public function selectValue(
         string $from,
-        mixed $field,
-        mixed $where = [],
-        ?string $debug = null
-    ): mixed {
+        $field,
+        $where = [],
+        $debug = false
+    ) {
         // Return the row
         $results = $this->selectRow($from, $field, $where, PDO::FETCH_NUM, $debug);
 
@@ -301,17 +302,17 @@ class Db
      * @param string $table Table name
      * @param array<string, mixed> $values Associative array containing the fields and values
      *                          e.g. ['name' => 'Cathy', 'city' => 'Cardiff']
-     * @param ?string $debug null, off, on or silent.
-     *              'off':    the insert is executed.
-     *              'on':     the insert is not executed. The query is displayed.
+     * @param bool|string $debug false, true or 'silent'.
+     *              false:    the insert is executed.
+     *              true:     the insert is not executed. The query is displayed.
      *              'silent': the insert is not executed. The query is registered then can be displayed using the getDebug() method.
      * @return bool|int The number of affected rows or false if there was an error.
      */
     public function insert(
         string $table,
         array $values,
-        ?string $debug = null
-    ): mixed {
+        $debug = false
+    ) {
         if ($values === []) {
             throw new DbException('Failed to insert data into table "<em>' . $table . '</em>".<br>The array of values to be inserted cannot be empty.');
         }
@@ -327,18 +328,18 @@ class Db
      *                          e.g. ['name' => 'Cathy', 'city' => 'Cardiff']
      * @param array<int|string, mixed>|string $where The WHERE clause. Can be a string or an array of conditions.
      *                     If it's an array, the conditions will be joined with AND.
-     * @param ?string $debug null, off, on or silent.
-     *              'off':    the update is executed.
-     *              'on':     the update is not executed. The query is displayed.
+     * @param bool|string $debug false, true or 'silent'.
+     *              false:    the update is executed.
+     *              true     the update is not executed. The query is displayed.
      *              'silent': the update is not executed. The query is registered then can be displayed using the getDebug() method.
      * @return bool|int The number of affected rows or false if there was an error.
      */
     public function update(
         string $table,
         array $values,
-        mixed $where = [],
-        ?string $debug = null
-    ): mixed {
+        $where = [],
+        $debug = false
+    ) {
         if ($values === []) {
             throw new DbException('Failed to update data from table "<em>' . $table . '</em>".<br>The array of values to be updated cannot be empty.');
         }
@@ -352,17 +353,17 @@ class Db
      * @param string $table The name of the table from which to delete the record.
      * @param array<int|string, mixed>|string $where An associative array of conditions to match the record(s) to be deleted.
      *                          The keys represent the column names and the values represent the matching values.
-     * @param ?string $debug null, off, on or silent.
-     *              'off':    the delete is executed.
-     *              'on':     the delete is not executed. The query is displayed.
+     * @param bool|string $debug false, true or 'silent'.
+     *              false:    the delete is executed.
+     *              true     the delete is not executed. The query is displayed.
      *              'silent': the delete is not executed. The query is registered then can be displayed using the getDebug() method.
      * @return bool|int The number of affected rows or false if there was an error.
      */
     public function delete(
         string $table,
-        mixed $where = [],
-        ?string $debug = null
-    ): mixed {
+        $where = [],
+        $debug = false
+    ) {
         return $this->queryBuilder->delete($table, $where)->debugOnce($debug)->execute();
     }
 
@@ -375,7 +376,7 @@ class Db
      * @param string|null $key_field The name of the field that holds the key, making the return value an associative array.
      * @return array<mixed> Returns an array with only the specified data.
      */
-    public function convertQueryToSimpleArray(mixed $array, string $value_field, ?string $key_field = null): array
+    public function convertToSimpleArray($array, string $value_field, ?string $key_field = null): array
     {
         // Create an empty array
         $return = [];
@@ -402,10 +403,10 @@ class Db
      * Get the information about the columns in a given table
      *
      * @param string $table The name of the table
-     * @param int $fetch_parameters [OPTIONAL] The PDO fetch style record options
-     * @param ?string $debug null, off, on or silent.
-     *              'off':    the production mode.
-     *              'on':     The query is displayed.
+     * @param int $fetchParameters [OPTIONAL] The PDO fetch style record options
+     * @param bool|string $debug false, true or 'silent'.
+     *              false:    the production mode.
+     *              true:     The query is displayed.
      *              'silent': The query is registered then can be displayed using the getDebug() method.
      * @return mixed An associative array that contains the columns data or false if the table doesn't have any column.
      * [
@@ -421,26 +422,26 @@ class Db
      *         - DEFAULT_GENERATED for columns that have an expression default value.
      * ]
      */
-    public function getColumns(string $table, int $fetch_parameters = PDO::FETCH_OBJ, ?string $debug = null): mixed
+    public function getColumns(string $table, int $fetchParameters = PDO::FETCH_OBJ, $debug = false)
     {
         $qry = $this->connection->getGetColumnsSql($table);
 
         $this->query($qry, [], $debug);
 
-        return $this->fetchAll($fetch_parameters);
+        return $this->fetchAll($fetchParameters);
     }
 
     /**
      * Returns the columns names of the target table in a table
      *
      * @param string $table The name of the table
-     * @param ?string $debug null, off, on or silent.
-     *              'off':    the production mode.
-     *              'on':     The query is displayed.
+     * @param bool|string $debug false, true or 'silent'.
+     *              false:    the production mode.
+     *              true:     The query is displayed.
      *              'silent': The query is registered then can be displayed using the getDebug() method.
      * @return mixed An array that contains the columns names or false if the table doesn't have any column.
      */
-    public function getColumnsNames(string $table, ?string $debug = null):mixed
+    public function getColumnsNames(string $table, $debug = false)
     {
         $columns = $this->getColumns($table, PDO::FETCH_ASSOC, $debug);
 
@@ -450,19 +451,19 @@ class Db
 
         $fieldname = $this->connection->getDriverColumnName();
 
-        return $this->convertQueryToSimpleArray($columns, $fieldname);
+        return $this->convertToSimpleArray($columns, $fieldname);
     }
 
     /**
      * Selects all the tables into the database
      *
-     * @param ?string $debug null, off, on or silent.
-     *              'off':    the production mode.
-     *              'on':     The query is displayed.
+     * @param bool|string $debug false, true or 'silent'.
+     *              false:    the production mode.
+     *              true:     The query is displayed.
      *              'silent': The query is registered then can be displayed using the getDebug() method.
      * @return mixed Array with tables if success otherwise false
      */
-    public function getTables(?string $debug = null): mixed
+    public function getTables($debug = false)
     {
         $qry = $this->connection->getGetTablesSql();
 
@@ -507,25 +508,25 @@ class Db
     }
 
     /**
-     * Fetches the next row from a result set and returns it according to the $fetch_parameters format
+     * Fetches the next row from a result set and returns it according to the $fetchParameters format
      *
-     * @param int $fetch_parameters The PDO fetch style record options
+     * @param int $fetchParameters The PDO fetch style record options
      * @return mixed The next row or false if we reached the end
      */
-    public function fetch(int $fetch_parameters = PDO::FETCH_OBJ): mixed
+    public function fetch(int $fetchParameters = PDO::FETCH_OBJ)
     {
-        return $this->queryBuilder->fetch($fetch_parameters);
+        return $this->queryBuilder->fetch($fetchParameters);
     }
 
     /**
-     * Fetches all rows from a result set and return them according to the $fetch_parameters format
+     * Fetches all rows from a result set and return them according to the $fetchParameters format
      *
-     * @param int $fetch_parameters The PDO fetch style record options
+     * @param int $fetchParameters The PDO fetch style record options
      * @return mixed The rows according to PDO fetch style or false if no record
      */
-    public function fetchAll(int $fetch_parameters = PDO::FETCH_OBJ)
+    public function fetchAll(int $fetchParameters = PDO::FETCH_OBJ)
     {
-        return $this->queryBuilder->fetchAll($fetch_parameters);
+        return $this->queryBuilder->fetchAll($fetchParameters);
     }
 
     /**
@@ -551,9 +552,9 @@ class Db
     /**
      * Get the last insert ID.
      *
-     * @return string|false The last insert ID or false if there was an error.
+     * @return bool|string The last insert ID or false if there was an error.
      */
-    public function getLastInsertId(): mixed
+    public function getLastInsertId()
     {
         return $this->queryBuilder->getLastInsertId();
     }
@@ -565,7 +566,7 @@ class Db
      * @param string $field The name of the field.
      * @return mixed The maximum value of the specified field or false if no value is found.
      */
-    public function getMaximumValue(string $table, string $field): mixed
+    public function getMaximumValue(string $table, string $field)
     {
         return $this->queryBuilder->getMaximumValue($table, $field);
     }
@@ -575,7 +576,7 @@ class Db
      *
      * @return int|false The number of rows, or false on failure.
      */
-    public function numRows(): mixed
+    public function numRows()
     {
         return $this->queryBuilder->numRows();
     }
@@ -583,9 +584,9 @@ class Db
     /**
      * Sets the queryBuilder's debugOnceMode.
      *
-     * @param ?string $mode The debug mode to set.
+     * @param bool|string $mode The debug mode to set.
      */
-    public function debugOnce(?string $mode): self
+    public function debugOnce($mode): self
     {
         $this->queryBuilder->debugOnce($mode);
         return $this;
@@ -604,9 +605,9 @@ class Db
     /**
      * Sets the queryBuilder's debugGlobalMode.
      *
-     * @param string|null $mode The debug mode to set. Pass `null` to disable debug mode.
+     * @param bool|string $mode The debug mode to set. Pass `null` to disable debug mode.
      */
-    public function setDebug(?string $mode): void
+    public function setDebug($mode): void
     {
         $this->queryBuilder->setDebug($mode);
     }
@@ -614,9 +615,9 @@ class Db
     /**
      * Get the debug mode of the query builder.
      *
-     * @return string|null The debug mode of the query builder.
+     * @return bool|string The debug mode of the query builder.
      */
-    public function getDebugMode(): ?string
+    public function getDebugMode()
     {
         return $this->queryBuilder->getDebugMode();
     }

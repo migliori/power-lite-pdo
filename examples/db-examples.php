@@ -34,14 +34,14 @@
         $db = $container->get(Db::class);
 
         $from = 'users'; // The table name
-        $fields = ['id', 'username', 'email']; // The columns you want to select
+        $fields = ['id', 'name', 'email']; // The columns you want to select
         $where = ['status' => 'active']; // The conditions for the WHERE clause
 
         $db->select($from, $fields, $where);
 
         $records = [];
         while ($record = $db->fetch()) {
-            $records[] = $record->id . ', ' . $record->username . ', ' . $record->email;
+            $records[] = $record->id . ', ' . $record->name . ', ' . $record->email;
         }
         ?>
 
@@ -54,14 +54,14 @@ $container = require_once __DIR__ . '/../src/bootstrap.php';
 $db = $container->get(Db::class);
 
 $from = 'users'; // The table name
-$fields = ['id', 'username', 'email']; // The columns you want to select
+$fields = ['id', 'name', 'email']; // The columns you want to select
 $where = ['status' => 'active']; // The conditions for the WHERE clause
 
 $db->select($from, $fields, $where);
 
 $records = [];
 while ($record = $db->fetch()) {
-    $records[] = $record->id . ', ' . $record->username . ', ' . $record->email;
+    $records[] = $record->id . ', ' . $record->name . ', ' . $record->email;
 }
 </code></pre>
 

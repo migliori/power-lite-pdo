@@ -46,7 +46,7 @@ class Utilities
      * @param mixed $value The value to determine the data type of.
      * @return int The data type of the value.
      */
-    public static function getDataType(mixed $value): int
+    public static function getDataType($value): int
     {
         if (is_int($value)) {
             return PDO::PARAM_INT;
@@ -64,11 +64,11 @@ class Utilities
     }
 
     /**
-     * Interpolates the query by replacing placeholders with their corresponding values.
+     * Interpolates the given query string with the provided placeholders.
      *
-     * @param string $queryString The SQL query with placeholders.
-     * @param array<string, mixed> $placeholders An array of parameter values to be interpolated into the query.
-     * @return string The interpolated query.
+     * @param string $queryString The query string to be interpolated.
+     * @param array<int|string, mixed> $placeholders An associative array of placeholders and their corresponding values.
+     * @return string The interpolated query string.
      */
     public static function interpolateQuery(string $queryString, array $placeholders): string
     {
@@ -80,13 +80,19 @@ class Utilities
         }
 
         // Sort $placeholders by key length in descending order.
-        uksort($placeholders, static function (string $a, string $b) : int {
-            return strlen($b) - strlen($a);
+        uksort($placeholders, static function ($a, $b): int {
+            return strlen((string)$b) - strlen((string)$a);
         });
 
         // Build a regular expression for each parameter.
         foreach ($placeholders as $key => $value) {
-            $keys[] = '/:' . $key . '/';
+            // Handle both named and indexed placeholders
+            if (is_string($key)) {
+                $keys[] = '/:' . $key . '/';
+            } else {
+                // For indexed placeholders, we support both :1 and ? styles
+                $keys[] = '/(:' . ($key + 1) . '|\\?)/';
+            }
 
             if (is_string($value)) {
                 $values[] = "'" . $value . "'";
@@ -95,11 +101,14 @@ class Utilities
             } elseif (is_null($value)) {
                 $values[] = 'NULL';
             } else {
-                $values[] = $value;
+                $values[] = is_object($value) ? serialize($value) : var_export($value, true);
             }
         }
 
-        $interpolatedQuery = preg_replace($keys, $values, $queryString);
+        $index = 0;
+        $interpolatedQuery = preg_replace_callback($keys, function ($matches) use (&$index, $values) {
+            return $values[$index++] ?? '';
+        }, $queryString);
 
         return (string) $interpolatedQuery;
     }

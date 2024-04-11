@@ -350,12 +350,12 @@ class DbTest extends TestCase
             3 => 'Bob'
         ];
 
-        $actualResult = $this->db->convertQueryToSimpleArray($array, $valueField, $keyField);
+        $actualResult = $this->db->convertToSimpleArray($array, $valueField, $keyField);
 
         $this->assertEquals($expectedResult, $actualResult);
     }
 
-    public function testConvertQueryToSimpleArrayWithoutKeyField()
+    public function testConvertToSimpleArrayWithoutKeyField()
     {
         $array = [
             ['name' => 'John'],
@@ -365,18 +365,18 @@ class DbTest extends TestCase
         $valueField = 'name';
         $expectedResult = ['John', 'Jane', 'Bob'];
 
-        $actualResult = $this->db->convertQueryToSimpleArray($array, $valueField);
+        $actualResult = $this->db->convertToSimpleArray($array, $valueField);
 
         $this->assertEquals($expectedResult, $actualResult);
     }
 
-    public function testConvertQueryToSimpleArrayWithEmptyArray()
+    public function testConvertToSimpleArrayWithEmptyArray()
     {
         $array = [];
         $valueField = 'name';
         $expectedResult = [];
 
-        $actualResult = $this->db->convertQueryToSimpleArray($array, $valueField);
+        $actualResult = $this->db->convertToSimpleArray($array, $valueField);
 
         $this->assertEquals($expectedResult, $actualResult);
     }

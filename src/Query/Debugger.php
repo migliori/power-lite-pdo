@@ -27,13 +27,13 @@ class Debugger
      * Dumps the information related to a database query for debugging purposes.
      *
      * @param string $queryType The type of the query (e.g. SELECT, INSERT, UPDATE, DELETE).
-     * @param array<string, mixed>|null $placeholders The array of placeholders used in the query.
+     * @param array<int|string, mixed>|null $placeholders The array of placeholders used in the query.
      * @param ?PDOStatement $pdoStatement The PDOStatement object representing the query.
      * @param string $interpolatedSql The interpolated SQL query.
      * @param int|float|null $time The execution time of the query.
      * @param ?string $error The error message, if any.
      */
-    public function dump(string $queryType, ?array $placeholders, ?PDOStatement $pdoStatement, string $interpolatedSql, mixed $time, ?string $error = null): void
+    public function dump(string $queryType, ?array $placeholders, ?PDOStatement $pdoStatement, string $interpolatedSql, $time, ?string $error = null): void
     {
         $random_colors = ['coral', 'crimson', 'dodgerblue', 'darkcyan', 'darkgoldenrod', 'deeppink', 'forestgreen', 'goldenrod', 'mediumpurple', 'mediumseagreen'];
         shuffle($random_colors);

@@ -21,6 +21,11 @@
             ]
         }
     },
+    "scripts": {
+        "pre-update-cmd": [
+            "@php -r \"if (file_exists('src/connection.php')) { if (!file_exists('src/connection.backup.php') || is_writable('src/connection.backup.php')) { copy('src/connection.php', 'src/connection.backup.php'); } else { echo 'Backup file exists but is not writable.'; } } else { echo 'Source file does not exist.'; }\""
+        ]
+    },
     "authors": [
         {
             "name": "Gilles Migliori"

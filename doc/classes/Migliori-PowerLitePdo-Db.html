@@ -253,7 +253,7 @@ load, even with large amounts of data.</p>
 <dd>Constructor</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Migliori-PowerLitePdo-Db.html#method_convertQueryToSimpleArray">convertQueryToSimpleArray()</a>
+    <a href="classes/Migliori-PowerLitePdo-Db.html#method_convertToSimpleArray">convertToSimpleArray()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
@@ -279,14 +279,14 @@ using only one column or an associative array using another column as a key.</dd
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd>Fetches the next row from a result set and returns it according to the $fetch_parameters format</dd>
+<dd>Fetches the next row from a result set and returns it according to the $fetchParameters format</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Migliori-PowerLitePdo-Db.html#method_fetchAll">fetchAll()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd>Fetches all rows from a result set and return them according to the $fetch_parameters format</dd>
+<dd>Fetches all rows from a result set and return them according to the $fetchParameters format</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Migliori-PowerLitePdo-Db.html#method_getColumns">getColumns()</a>
@@ -520,7 +520,7 @@ using only one column or an associative array using another column as a key.</dd
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">48</span>
+    <span class="phpdocumentor-element-found-in__line">49</span>
 
     </aside>
 
@@ -553,7 +553,7 @@ using only one column or an associative array using another column as a key.</dd
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">49</span>
+    <span class="phpdocumentor-element-found-in__line">51</span>
 
     </aside>
 
@@ -591,7 +591,7 @@ using only one column or an associative array using another column as a key.</dd
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">57</span>
+    <span class="phpdocumentor-element-found-in__line">56</span>
 
     </aside>
 
@@ -599,7 +599,7 @@ using only one column or an associative array using another column as a key.</dd
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Migliori-PowerLitePdo-Driver-DriverBase.html"><abbr title="\Migliori\PowerLitePdo\Driver\DriverBase">DriverBase</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$connection</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html"><abbr title="\Migliori\PowerLitePdo\Query\QueryBuilder">QueryBuilder</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$queryBuilder</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Migliori-PowerLitePdo-Driver-DriverBase.html"><abbr title="\Migliori\PowerLitePdo\Driver\DriverBase">DriverBase</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$driverBase</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html"><abbr title="\Migliori\PowerLitePdo\Query\QueryBuilder">QueryBuilder</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$queryBuilder</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -607,7 +607,7 @@ using only one column or an associative array using another column as a key.</dd
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$connection</span>
+                <span class="phpdocumentor-signature__argument__name">$driverBase</span>
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/Migliori-PowerLitePdo-Driver-DriverBase.html"><abbr title="\Migliori\PowerLitePdo\Driver\DriverBase">DriverBase</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -632,15 +632,15 @@ using only one column or an associative array using another column as a key.</dd
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_convertQueryToSimpleArray">
-        convertQueryToSimpleArray()
-        <a href="classes/Migliori-PowerLitePdo-Db.html#method_convertQueryToSimpleArray" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_convertToSimpleArray">
+        convertToSimpleArray()
+        <a href="classes/Migliori-PowerLitePdo-Db.html#method_convertToSimpleArray" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">379</span>
+    <span class="phpdocumentor-element-found-in__line">378</span>
 
     </aside>
 
@@ -649,7 +649,7 @@ using only one column or an associative array using another column as a key.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">convertQueryToSimpleArray</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value_field</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key_field</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">convertToSimpleArray</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value_field</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key_field</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -711,7 +711,7 @@ using only one column or an associative array using another column as a key.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">590</span>
+    <span class="phpdocumentor-element-found-in__line">588</span>
 
     </aside>
 
@@ -759,7 +759,7 @@ using only one column or an associative array using another column as a key.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">362</span>
+    <span class="phpdocumentor-element-found-in__line">361</span>
 
     </aside>
 
@@ -833,15 +833,15 @@ The keys represent the column names and the values represent the matching values
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">516</span>
+    <span class="phpdocumentor-element-found-in__line">515</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Fetches the next row from a result set and returns it according to the $fetch_parameters format</p>
+        <p class="phpdocumentor-summary">Fetches the next row from a result set and returns it according to the $fetchParameters format</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">fetch</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fetch_parameters</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">PDO::FETCH_OBJ</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">fetch</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fetchParameters</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">PDO::FETCH_OBJ</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -849,7 +849,7 @@ The keys represent the column names and the values represent the matching values
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$fetch_parameters</span>
+                <span class="phpdocumentor-signature__argument__name">$fetchParameters</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                  = <span class="phpdocumentor-signature__argument__default-value">PDO::FETCH_OBJ</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -885,15 +885,15 @@ The keys represent the column names and the values represent the matching values
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">527</span>
+    <span class="phpdocumentor-element-found-in__line">526</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Fetches all rows from a result set and return them according to the $fetch_parameters format</p>
+        <p class="phpdocumentor-summary">Fetches all rows from a result set and return them according to the $fetchParameters format</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">fetchAll</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fetch_parameters</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">PDO::FETCH_OBJ</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">fetchAll</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fetchParameters</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">PDO::FETCH_OBJ</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -901,7 +901,7 @@ The keys represent the column names and the values represent the matching values
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$fetch_parameters</span>
+                <span class="phpdocumentor-signature__argument__name">$fetchParameters</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                  = <span class="phpdocumentor-signature__argument__default-value">PDO::FETCH_OBJ</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -937,7 +937,7 @@ The keys represent the column names and the values represent the matching values
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">425</span>
+    <span class="phpdocumentor-element-found-in__line">424</span>
 
     </aside>
 
@@ -945,7 +945,7 @@ The keys represent the column names and the values represent the matching values
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getColumns</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$table</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fetch_parameters</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">PDO::FETCH_OBJ</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">getColumns</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$table</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fetchParameters</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">PDO::FETCH_OBJ</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -962,7 +962,7 @@ The keys represent the column names and the values represent the matching values
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$fetch_parameters</span>
+                <span class="phpdocumentor-signature__argument__name">$fetchParameters</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                  = <span class="phpdocumentor-signature__argument__default-value">PDO::FETCH_OBJ</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -1022,7 +1022,7 @@ The keys represent the column names and the values represent the matching values
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">444</span>
+    <span class="phpdocumentor-element-found-in__line">443</span>
 
     </aside>
 
@@ -1086,7 +1086,7 @@ The keys represent the column names and the values represent the matching values
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">601</span>
+    <span class="phpdocumentor-element-found-in__line">599</span>
 
     </aside>
 
@@ -1126,7 +1126,7 @@ The keys represent the column names and the values represent the matching values
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">622</span>
+    <span class="phpdocumentor-element-found-in__line">619</span>
 
     </aside>
 
@@ -1166,7 +1166,7 @@ The keys represent the column names and the values represent the matching values
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">542</span>
+    <span class="phpdocumentor-element-found-in__line">541</span>
 
     </aside>
 
@@ -1254,7 +1254,7 @@ The keys represent the column names and the values represent the matching values
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">557</span>
+    <span class="phpdocumentor-element-found-in__line">556</span>
 
     </aside>
 
@@ -1294,7 +1294,7 @@ The keys represent the column names and the values represent the matching values
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">569</span>
+    <span class="phpdocumentor-element-found-in__line">568</span>
 
     </aside>
 
@@ -1355,7 +1355,7 @@ The keys represent the column names and the values represent the matching values
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">71</span>
+    <span class="phpdocumentor-element-found-in__line">70</span>
 
     </aside>
 
@@ -1395,7 +1395,7 @@ The keys represent the column names and the values represent the matching values
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">81</span>
+    <span class="phpdocumentor-element-found-in__line">80</span>
 
     </aside>
 
@@ -1435,7 +1435,7 @@ The keys represent the column names and the values represent the matching values
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">466</span>
+    <span class="phpdocumentor-element-found-in__line">465</span>
 
     </aside>
 
@@ -1490,7 +1490,7 @@ The keys represent the column names and the values represent the matching values
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">311</span>
+    <span class="phpdocumentor-element-found-in__line">310</span>
 
     </aside>
 
@@ -1564,7 +1564,7 @@ e.g. ['name' =&gt; 'Cathy', 'city' =&gt; 'Cardiff']</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">579</span>
+    <span class="phpdocumentor-element-found-in__line">578</span>
 
     </aside>
 
@@ -1604,7 +1604,7 @@ e.g. ['name' =&gt; 'Cathy', 'city' =&gt; 'Cardiff']</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">93</span>
+    <span class="phpdocumentor-element-found-in__line">92</span>
 
     </aside>
 
@@ -1672,7 +1672,7 @@ e.g. ['name' =&gt; 'Cathy', 'city' =&gt; 'Cardiff']</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">117</span>
+    <span class="phpdocumentor-element-found-in__line">116</span>
 
     </aside>
 
@@ -1680,7 +1680,7 @@ e.g. ['name' =&gt; 'Cathy', 'city' =&gt; 'Cardiff']</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">queryRow</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$sql</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$placeholders</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fetch_parameters</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">PDO::FETCH_OBJ</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">queryRow</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$sql</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$placeholders</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fetchParameters</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">PDO::FETCH_OBJ</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1706,7 +1706,7 @@ e.g. ['name' =&gt; 'Cathy', 'city' =&gt; 'Cardiff']</p>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$fetch_parameters</span>
+                <span class="phpdocumentor-signature__argument__name">$fetchParameters</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                  = <span class="phpdocumentor-signature__argument__default-value">PDO::FETCH_OBJ</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -1754,7 +1754,7 @@ e.g. ['name' =&gt; 'Cathy', 'city' =&gt; 'Cardiff']</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">141</span>
+    <span class="phpdocumentor-element-found-in__line">140</span>
 
     </aside>
 
@@ -1827,7 +1827,7 @@ e.g. ['name' =&gt; 'Cathy', 'city' =&gt; 'Cardiff']</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">175</span>
+    <span class="phpdocumentor-element-found-in__line">174</span>
 
     </aside>
 
@@ -1920,7 +1920,7 @@ If it's an array, the conditions will be joined with AND.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">206</span>
+    <span class="phpdocumentor-element-found-in__line">205</span>
 
     </aside>
 
@@ -2013,7 +2013,7 @@ If it's an array, the conditions will be joined with AND.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">254</span>
+    <span class="phpdocumentor-element-found-in__line">253</span>
 
     </aside>
 
@@ -2021,7 +2021,7 @@ If it's an array, the conditions will be joined with AND.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">selectRow</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$from</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|array&lt;string|int, string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fields</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;*&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;int|string, mixed&gt;|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$where</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fetch_parameters</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">PDO::FETCH_OBJ</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">selectRow</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$from</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|array&lt;string|int, string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fields</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;*&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;int|string, mixed&gt;|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$where</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fetchParameters</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">PDO::FETCH_OBJ</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -2058,7 +2058,7 @@ If it's an array, the conditions will be joined with AND.</p>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$fetch_parameters</span>
+                <span class="phpdocumentor-signature__argument__name">$fetchParameters</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                  = <span class="phpdocumentor-signature__argument__default-value">PDO::FETCH_OBJ</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -2106,7 +2106,7 @@ If it's an array, the conditions will be joined with AND.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">280</span>
+    <span class="phpdocumentor-element-found-in__line">279</span>
 
     </aside>
 
@@ -2190,7 +2190,7 @@ If it's an array, the conditions will be joined with AND.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">612</span>
+    <span class="phpdocumentor-element-found-in__line">609</span>
 
     </aside>
 
@@ -2234,7 +2234,7 @@ If it's an array, the conditions will be joined with AND.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">481</span>
+    <span class="phpdocumentor-element-found-in__line">480</span>
 
     </aside>
 
@@ -2291,7 +2291,7 @@ If it's an array, the conditions will be joined with AND.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">493</span>
+    <span class="phpdocumentor-element-found-in__line">492</span>
 
     </aside>
 
@@ -2348,7 +2348,7 @@ If it's an array, the conditions will be joined with AND.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">505</span>
+    <span class="phpdocumentor-element-found-in__line">504</span>
 
     </aside>
 
@@ -2405,7 +2405,7 @@ If it's an array, the conditions will be joined with AND.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">337</span>
+    <span class="phpdocumentor-element-found-in__line">336</span>
 
     </aside>
 
@@ -2598,7 +2598,7 @@ If it's an array, the conditions will be joined with AND.</p>
             <li>
                 <ul class="phpdocumentor-list -clean">
                                             <li><a href="classes/Migliori-PowerLitePdo-Db.html#method___construct">__construct()</a></li>
-                                            <li><a href="classes/Migliori-PowerLitePdo-Db.html#method_convertQueryToSimpleArray">convertQueryToSimpleArray()</a></li>
+                                            <li><a href="classes/Migliori-PowerLitePdo-Db.html#method_convertToSimpleArray">convertToSimpleArray()</a></li>
                                             <li><a href="classes/Migliori-PowerLitePdo-Db.html#method_debugOnce">debugOnce()</a></li>
                                             <li><a href="classes/Migliori-PowerLitePdo-Db.html#method_delete">delete()</a></li>
                                             <li><a href="classes/Migliori-PowerLitePdo-Db.html#method_fetch">fetch()</a></li>

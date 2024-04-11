@@ -31,7 +31,7 @@ class QueryBuilder
     private string $fields;
 
     /**
-     * @var array<string, mixed> $placeholders An array to store the placeholders used in the query.
+     * @var array<int|string, mixed> $placeholders An indexed or associative array to store the placeholders used in the query.
      */
     private array $placeholders = [];
 
@@ -47,6 +47,8 @@ class QueryBuilder
 
     private Result $result;
 
+    private bool|string $lastInsertId;
+
     private string $table;
 
     /**
@@ -61,17 +63,17 @@ class QueryBuilder
      * debugGlobalMode is the global debug mode for the class.
      * debugOnceMode is the debug mode for a single query.
      *
-     * If debugOnceMode is null, the global debug mode will be used.
+     * If debugOnceMode is false, the global debug mode will be used.
      * If debugOnceMode is set, it will override the global debug mode.
-     * Both can be set to null, 'off', 'on', or 'silent'.
+     * Both can be set to false, true, or 'silent'.
      *
-     * If set to 'on', the class will display detailed error messages.
+     * If set to true, the class will display detailed error messages.
      * If set to 'silent', the class will register all error messages, which can be retrieved using the getDebug() method.
      */
 
-    private ?string $debugOnceMode = null;
+    private bool|string $debugOnceMode = false;
 
-    private ?string $debugGlobalMode = null;
+    private bool|string $debugGlobalMode = false;
 
     /**
      * Constructor for the QueryBuilder class.
@@ -101,7 +103,7 @@ class QueryBuilder
      *                             If it's an array, the columns will be joined with a comma.
      * @return self The current instance of the QueryBuilder.
      */
-    public function select(mixed $fields): self
+    public function select($fields): self
     {
         // Reset the query builder
         $this->clear();
@@ -134,7 +136,7 @@ class QueryBuilder
      *                     If it's an array, the conditions will be joined with AND.
      * @return self The current instance of the QueryBuilder.
      */
-    public function where(mixed $where): self
+    public function where($where): self
     {
         $this->where->set($where);
         $this->placeholders = $this->where->getPlaceholders();
@@ -168,7 +170,7 @@ class QueryBuilder
      * @param int|string $limit The LIMIT clause.
      * @return self The current instance of the QueryBuilder.
      */
-    public function limit(mixed $limit): self
+    public function limit($limit): self
     {
         $this->parameters->set('limit', $limit);
         return $this;
@@ -204,7 +206,7 @@ class QueryBuilder
     /**
      * Set the placeholders for the query.
      *
-     * @param array<string, mixed> $placeholders An associative array of placeholders and their values.
+     * @param array<int|string, mixed> $placeholders An indexed or associative array to store the placeholders used in the query.
      * @return self The QueryBuilder instance.
      */
     public function placeholders(array $placeholders): self
@@ -248,7 +250,7 @@ class QueryBuilder
      *                     If it's an array, the conditions will be joined with AND.
      * @return self The current instance of the QueryBuilder.
      */
-    public function update(string $table, array $values, mixed $where): self
+    public function update(string $table, array $values, $where): self
     {
         // Reset the query builder
         $this->clear();
@@ -268,7 +270,7 @@ class QueryBuilder
      * @param array<int|string, mixed>|string $where The condition(s) to be used in the delete query.
      * @return self The current instance of the QueryBuilder.
      */
-    public function delete(string $table, mixed $where): self
+    public function delete(string $table, $where): self
     {
         // Reset the query builder
         $this->clear();
@@ -285,7 +287,7 @@ class QueryBuilder
      *
      * @return bool|int The result of the query execution.
      */
-    public function execute(): mixed
+    public function execute()
     {
         if ($this->queryType !== 'RAW') {
             if ($this->queryType === 'SELECT') {
@@ -305,6 +307,8 @@ class QueryBuilder
 
     /**
      * Execute the SELECT query.
+     *
+     * @return bool True if the query was successful, false otherwise.
      */
     public function executeQuery(): bool
     {
@@ -320,13 +324,7 @@ class QueryBuilder
             $this->queryString = $query->queryString;
 
             // If there are placeholders...
-            foreach ($this->placeholders as $field => $value) {
-                // Determine the datatype
-                $dataType = Utilities::getDataType($value);
-
-                // Bind the placeholder and value to the query
-                $query->bindValue($field, $value, $dataType);
-            }
+            $query = $this->bindValues($query);
 
             // Start a timer
             $timeStart = microtime(true);
@@ -374,7 +372,7 @@ class QueryBuilder
      *
      * @return bool|int The number of affected rows or false if there was an error.
      */
-    public function executeStatement(): mixed
+    public function executeStatement()
     {
         // Build the SQL query
         $sql = $this->queryType === 'RAW' ? $this->rawQuery : $this->getSqlStatement();
@@ -401,15 +399,8 @@ class QueryBuilder
                 $pdo->beginTransaction();
             }
 
-            // If there are values in the passed in array
-            // Loop through the placeholders and values
-            foreach ($this->placeholders as $field => $value) {
-                // Determine the datatype
-                $dataType = Utilities::getDataType($value);
-
-                // Bind the placeholder and value to the query
-                $query->bindValue($field, $value, $dataType);
-            }
+            // If there are placeholders...
+            $query = $this->bindValues($query);
 
             // Start a timer
             $timeStart = microtime(true);
@@ -426,8 +417,13 @@ class QueryBuilder
 
             $affectedRows = $query->rowCount();
 
+            // register the lastInsertId if the driver supports it and the query is an INSERT
+            if ($this->connection->driverSupportsLastInsertId() && ($this->queryType == 'INSERT' || ($this->queryType == 'RAW' && strpos($this->rawQuery, 'INSERT') !== false))) {
+                $this->lastInsertId = $pdo->lastInsertId();
+            }
+
             // Debug only
-            if ($this->debugGlobalMode !== 'off') {
+            if ($this->debugGlobalMode !== false || $this->debugOnceMode !== false) {
                 // Rollback the transaction
                 if (!$inTransaction && !$isSqlAutoCommit) {
                     $pdo->rollback();
@@ -560,7 +556,7 @@ class QueryBuilder
      * @param int $fetch_parameters The fetch style to use. Default is \PDO::FETCH_OBJ.
      * @return mixed The fetched row as an object or an array, depending on the fetch style.
      */
-    public function fetch(int $fetch_parameters = PDO::FETCH_OBJ): mixed
+    public function fetch(int $fetch_parameters = PDO::FETCH_OBJ)
     {
         return $this->result->fetch($fetch_parameters);
     }
@@ -571,7 +567,7 @@ class QueryBuilder
      * @param int $fetch_parameters The fetch mode to use. Defaults to \PDO::FETCH_OBJ.
      * @return mixed An array of rows fetched from the database.
      */
-    public function fetchAll(int $fetch_parameters = PDO::FETCH_OBJ): mixed
+    public function fetchAll(int $fetch_parameters = PDO::FETCH_OBJ)
     {
         return $this->result->fetchAll($fetch_parameters);
     }
@@ -649,18 +645,16 @@ class QueryBuilder
     /**
      * Get the last insert ID.
      *
-     * @return string|false The last insert ID or false if there was an error.
+     * @return bool|string The last insert ID or false if there was an error.
      */
-    public function getLastInsertId(): mixed
+    public function getLastInsertId()
     {
-        if ($this->queryType !== 'INSERT') {
+        if ($this->queryType !== 'INSERT' && $this->queryType !== 'RAW' && strpos($this->rawQuery, 'INSERT') === false) {
             throw new QueryBuilderException('getLastInsertId() can only be called after an INSERT query');
         }
 
-        $pdo = $this->connection->getPdo();
-
         if ($this->connection->driverSupportsLastInsertId()) {
-            return $pdo->lastInsertId();
+            return $this->lastInsertId;
         }
 
         throw new QueryBuilderException('The driver does not support lastInsertId(). Use getMaximumValue($table, $field) instead.');
@@ -670,7 +664,7 @@ class QueryBuilder
      * Get the maximum value from a specific table field.
      * @return mixed the field value or false if no value is found.
      */
-    public function getMaximumValue(string $table, string $field): mixed
+    public function getMaximumValue(string $table, string $field)
     {
         $this->select($field)
             ->from($table)
@@ -791,7 +785,7 @@ class QueryBuilder
      *
      * @return int|false The number of rows, or false on failure.
      */
-    public function numRows(): mixed
+    public function numRows()
     {
         $return = false;
         $time   = false;
@@ -890,13 +884,13 @@ class QueryBuilder
     /**
      * Sets the debug mode for the query builder.
      *
-     * @param ?string $mode The debug mode to set.
+     * @param bool|string $mode The debug mode to set.
      * @return self The current instance of the QueryBuilder.
      */
-    public function debugOnce(?string $mode): self
+    public function debugOnce($mode): self
     {
-        // accept only 'off', 'on', 'silent'
-        if (!in_array($mode, [null, 'off', 'on', 'silent'])) {
+        // accept only false, true, 'silent'
+        if (!in_array($mode, [false, true, 'silent'])) {
             throw new InvalidArgumentException('Invalid debug mode');
         }
 
@@ -917,12 +911,12 @@ class QueryBuilder
     /**
      * Sets the debug mode for the query builder.
      *
-     * @param ?string $mode The debug mode to set.
+     * @param bool|string $mode The debug mode to set.
      */
-    public function setDebug(?string $mode): void
+    public function setDebug($mode): void
     {
-        // accept only 'off', 'on', 'silent'
-        if (!in_array($mode, [null, 'off', 'on', 'silent'])) {
+        // accept only false, true, 'silent'
+        if (!in_array($mode, [false, true, 'silent'])) {
             throw new InvalidArgumentException('Invalid debug mode');
         }
 
@@ -932,11 +926,38 @@ class QueryBuilder
     /**
      * Get the debug mode value.
      *
-     * @return string|null The debug mode value.
+     * @return bool|string The debug mode value.
      */
-    public function getDebugMode(): ?string
+    public function getDebugMode()
     {
         return $this->debugGlobalMode;
+    }
+
+    /**
+     * Binds placeholders values to a prepared statement.
+     *
+     * @param PDOStatement $query The prepared statement to bind values to.
+     * @return PDOStatement The prepared statement with bound values.
+     */
+    private function bindValues(PDOStatement $query): PDOStatement
+    {
+        $index = 1; // Start index for unnamed parameters
+        foreach ($this->placeholders as $key => $value) {
+            // Determine the datatype
+            $dataType = Utilities::getDataType($value);
+
+            // Check if we are dealing with named or unnamed parameters
+            if (is_string($key)) {
+                // Bind the placeholder and value to the query
+                $query->bindValue($key, $value, $dataType);
+            } else {
+                // Bind the value to the query at the current index for unnamed parameters
+                $query->bindValue($index, $value, $dataType);
+                $index++;
+            }
+        }
+
+        return $query;
     }
 
     /**
@@ -946,7 +967,7 @@ class QueryBuilder
      */
     private function clear(): void
     {
-        $this->debugOnceMode = null;
+        $this->debugOnceMode = false;
         $this->fields        = '';
         $this->from          = '';
         $this->queryType     = '';
@@ -966,11 +987,11 @@ class QueryBuilder
      */
     private function dumpDebug(
         ?PDOStatement $pdoStatement,
-        mixed $time,
+        $time,
         ?string $errorMessage = null
     ): void {
-        $activeDebugMode = $this->debugOnceMode ?? $this->debugGlobalMode;
-        if ($activeDebugMode !== 'off') {
+        $activeDebugMode = $this->debugOnceMode !== false? $this->debugOnceMode: $this->debugGlobalMode;
+        if ($activeDebugMode !== false) {
             $interpolatedSql = '';
 
             if ($pdoStatement instanceof PDOStatement) {
@@ -981,7 +1002,7 @@ class QueryBuilder
             $this->debugger = new Debugger($view);
             $this->debugger->dump($this->queryType, $this->placeholders, $pdoStatement, $interpolatedSql, $time, $errorMessage);
 
-            if ($activeDebugMode === 'on' && !defined('PHPUNIT_TESTSUITE_RUNNIG')) {
+            if ($activeDebugMode === true && !defined('PHPUNIT_TESTSUITE_RUNNIG')) {
                 $this->debugger->getView()->render()->clear();
             }
         }
