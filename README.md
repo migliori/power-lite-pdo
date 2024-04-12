@@ -3,7 +3,7 @@
 
 ![Static Badge](https://img.shields.io/badge/php%207.4+-fafafa?logo=php) [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
 
-Power Lite PDO is a lightweight, powerful PHP library that provides a simple and efficient way to interact with databases using PHP Data Objects (PDO).
+[PowerLite PDO](https://www.powerlitepdo.com) is a lightweight, powerful PHP library that provides a simple and efficient way to interact with databases using PHP Data Objects (PDO).
 It supports multiple database drivers and includes features like easy connection management, query execution, result handling and pagination.
 
 ## Features
