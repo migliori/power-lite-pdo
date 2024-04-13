@@ -33,7 +33,7 @@ class Mysql extends DriverBase
         }
 
         if (!in_array('mysql', PDO::getAvailableDrivers(), true)) {
-            throw new Exception('The PDO OCI driver is not available');
+            throw new Exception('The PDO MySQL driver is not available');
         }
 
         $this->dsnParams = $dsnParams;
