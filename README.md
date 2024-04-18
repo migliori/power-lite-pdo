@@ -6,6 +6,20 @@
 [PowerLite PDO](https://www.powerlitepdo.com) is a lightweight, powerful PHP library that provides a simple and efficient way to interact with databases using PHP Data Objects (PDO).
 It supports multiple database drivers and includes features like easy connection management, query execution, result handling and pagination.
 
+[![PowerLite PDO](https://www.powerlitepdo.com/images/powerlite-pdo-logo-horizontal_hub35d7904902ab68b0689921e5207cfe8_6821_960x320_resize_q75_h2_box_3.webp)](https://www.powerlitepdo.com)
+
+## Table of Contents
+
+- [Features](#features)
+- [Requirements](#requirements)
+- [Documentation](#documentation)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage/Examples](#usageexamples)
+- [Running Tests](#running-tests)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Features
 
 - **Containerized Connections:** The containers are used to connect your database and handle the configuration and dependencies seamlessly.
@@ -147,6 +161,19 @@ To run tests, run the following command
 ```bash
 php ./vendor/bin/phpunit test
 ```
+
+## Dependencies
+
+- **Composer:** A dependency management tool for PHP.
+- **PHP-DI:** A dependency injection container for PHP.
+- **PDO:** The PHP Data Objects extension for accessing databases.
+- **Database Drivers:** The specific drivers for the databases you want to connect to (e.g., MySQL, PostgreSQL, Oracle, Firebird, ...).
+
+## Dev Dependencies
+
+- **PHPUnit:** A testing framework for unit testing PHP code.
+- **PHPStan:** A static analysis tool that helps find bugs in PHP code.
+- **PHP CodeSniffer:** A set of rules to ensure that PHP code follows coding standards.
 
 ## Contributing
 
