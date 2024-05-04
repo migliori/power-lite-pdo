@@ -69,7 +69,7 @@ For enhanced safety, store the file outside of your web server's document root (
     use Migliori\PowerLitePdo\Db;
 
     // Build the container and connect to the database
-    $container = require_once __DIR__ . '/../src/bootstrap.php';
+    $container = require_once __DIR__ . '/vendor/migliori/power-lite-pdo/src/bootstrap.php';
     $db = $container->get(Db::class);
     ```
 
@@ -99,7 +99,7 @@ For enhanced safety, store the file outside of your web server's document root (
     use Migliori\PowerLitePdo\Query\QueryBuilder;
 
     // Build the container and connect to the database
-    $container = require_once __DIR__ . '/../src/bootstrap.php';
+    $container = require_once __DIR__ . '/vendor/migliori/power-lite-pdo/src/bootstrap.php';
     $queryBuilder = $container->get(QueryBuilder::class);
     ```
 
@@ -125,7 +125,7 @@ For enhanced safety, store the file outside of your web server's document root (
     use Migliori\PowerLitePdo\Pagination;
 
     // Build the container and connect to the database
-    $container = require_once __DIR__ . '/../src/bootstrap.php';
+    $container = require_once __DIR__ . '/vendor/migliori/power-lite-pdo/src/bootstrap.php';
     $pagination = $container->get(Pagination::class);
     ```
 

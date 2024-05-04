@@ -1,7 +1,8 @@
 <?php
 use DI\ContainerBuilder;
 
-require_once __DIR__ . '/../vendor/autoload.php';
+// Load the Composer autoloader
+require_once __DIR__ . '/../../../autoload.php';
 
 $containerBuilder = new ContainerBuilder();
 
