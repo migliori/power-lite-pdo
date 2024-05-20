@@ -1031,6 +1031,11 @@ Search.appendIndex(
             "summary": "Get\u0020the\u0020debug\u0020mode\u0020value.",
             "url": "classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#method_getDebugMode"
         },                {
+            "fqsen": "\\Migliori\\PowerLitePdo\\Query\\QueryBuilder\u003A\u003AbindValues\u0028\u0029",
+            "name": "bindValues",
+            "summary": "Binds\u0020placeholders\u0020values\u0020to\u0020a\u0020prepared\u0020statement.",
+            "url": "classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#method_bindValues"
+        },                {
             "fqsen": "\\Migliori\\PowerLitePdo\\Query\\QueryBuilder\u003A\u003Aclear\u0028\u0029",
             "name": "clear",
             "summary": "Clears\u0020the\u0020query\u0020builder\u0020by\u0020resetting\u0020all\u0020the\u0020properties.",
@@ -1095,6 +1100,11 @@ Search.appendIndex(
             "name": "result",
             "summary": "",
             "url": "classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#property_result"
+        },                {
+            "fqsen": "\\Migliori\\PowerLitePdo\\Query\\QueryBuilder\u003A\u003A\u0024lastInsertId",
+            "name": "lastInsertId",
+            "summary": "",
+            "url": "classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#property_lastInsertId"
         },                {
             "fqsen": "\\Migliori\\PowerLitePdo\\Query\\QueryBuilder\u003A\u003A\u0024table",
             "name": "table",

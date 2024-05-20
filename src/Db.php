@@ -18,7 +18,7 @@ use Migliori\PowerLitePdo\View\View;
  * for interacting with different types of databases. It handles connection management, query execution,
  * pagination and result processing, allowing developers to focus on the business logic of their application.
  *
- * Full documentation with code examples is available here: {@link [https://www.phpformbuilder.pro/documentation/php-pdo-database-class.php] [https://www.phpformbuilder.pro/documentation/php-pdo-database-class.php]}
+ * Full documentation with code examples is available here: {@link [https://www.powerlitepdo.com/] [https://www.powerlitepdo.com/]}
  *
  * The Db class is designed to be flexible and extensible, allowing developers to easily customize it
  * to meet their specific needs. It supports multiple database types, including MySQL, PostgreSQL, Firebird,

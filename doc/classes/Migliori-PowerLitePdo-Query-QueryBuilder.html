@@ -164,13 +164,13 @@
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#property_debugGlobalMode">$debugGlobalMode</a>
     <span>
-                        &nbsp;: string|null            </span>
+                        &nbsp;: bool|string            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#property_debugOnceMode">$debugOnceMode</a>
     <span>
-                        &nbsp;: string|null            </span>
+                        &nbsp;: bool|string            </span>
 </dt>
 <dd>Debug mode for the query builder.</dd>
 
@@ -184,6 +184,12 @@
     <a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#property_from">$from</a>
     <span>
                         &nbsp;: string            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#property_lastInsertId">$lastInsertId</a>
+    <span>
+                        &nbsp;: bool|string            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
@@ -328,7 +334,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#method_getDebugMode">getDebugMode()</a>
     <span>
-                                &nbsp;: string|null    </span>
+                                &nbsp;: bool|string    </span>
 </dt>
 <dd>Get the debug mode value.</dd>
 
@@ -356,7 +362,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#method_getLastInsertId">getLastInsertId()</a>
     <span>
-                                &nbsp;: string|false    </span>
+                                &nbsp;: bool|string    </span>
 </dt>
 <dd>Get the last insert ID.</dd>
 
@@ -521,6 +527,13 @@
 <dd>Set the WHERE clause for the query.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#method_bindValues">bindValues()</a>
+    <span>
+                                &nbsp;: <abbr title="\PDOStatement">PDOStatement</abbr>    </span>
+</dt>
+<dd>Binds placeholders values to a prepared statement.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#method_clear">clear()</a>
     <span>
                                 &nbsp;: void    </span>
@@ -632,7 +645,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">57</span>
+    <span class="phpdocumentor-element-found-in__line">59</span>
 
     </aside>
 
@@ -665,16 +678,16 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">74</span>
+    <span class="phpdocumentor-element-found-in__line">76</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-        <span class="phpdocumentor-signature__type">string|null</span>
+        <span class="phpdocumentor-signature__type">bool|string</span>
     <span class="phpdocumentor-signature__name">$debugGlobalMode</span>
-     = <span class="phpdocumentor-signature__default-value">null</span></code>
+     = <span class="phpdocumentor-signature__default-value">false</span></code>
 
     
     
@@ -698,7 +711,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">72</span>
+    <span class="phpdocumentor-element-found-in__line">74</span>
 
     </aside>
 
@@ -706,16 +719,16 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-        <span class="phpdocumentor-signature__type">string|null</span>
+        <span class="phpdocumentor-signature__type">bool|string</span>
     <span class="phpdocumentor-signature__name">$debugOnceMode</span>
-     = <span class="phpdocumentor-signature__default-value">null</span></code>
+     = <span class="phpdocumentor-signature__default-value">false</span></code>
 
         <section class="phpdocumentor-description"><p>debugGlobalMode is the global debug mode for the class.
 debugOnceMode is the debug mode for a single query.</p>
-<p>If debugOnceMode is null, the global debug mode will be used.
+<p>If debugOnceMode is false, the global debug mode will be used.
 If debugOnceMode is set, it will override the global debug mode.
-Both can be set to null, 'off', 'on', or 'silent'.</p>
-<p>If set to 'on', the class will display detailed error messages.
+Both can be set to false, true, or 'silent'.</p>
+<p>If set to true, the class will display detailed error messages.
 If set to 'silent', the class will register all error messages, which can be retrieved using the getDebug() method.</p>
 </section>
 
@@ -782,6 +795,39 @@ If set to 'silent', the class will register all error messages, which can be ret
     <span class="phpdocumentor-signature__visibility">private</span>
         <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">$from</span>
+    </code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_lastInsertId">
+        $lastInsertId
+        <a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#property_lastInsertId" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">50</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+        <span class="phpdocumentor-signature__type">bool|string</span>
+    <span class="phpdocumentor-signature__name">$lastInsertId</span>
     </code>
 
     
@@ -1006,7 +1052,7 @@ If set to 'silent', the class will register all error messages, which can be ret
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">50</span>
+    <span class="phpdocumentor-element-found-in__line">52</span>
 
     </aside>
 
@@ -1039,7 +1085,7 @@ If set to 'silent', the class will register all error messages, which can be ret
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">55</span>
+    <span class="phpdocumentor-element-found-in__line">57</span>
 
     </aside>
 
@@ -1112,7 +1158,7 @@ If set to 'silent', the class will register all error messages, which can be ret
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">81</span>
+    <span class="phpdocumentor-element-found-in__line">83</span>
 
     </aside>
 
@@ -1177,7 +1223,7 @@ If set to 'silent', the class will register all error messages, which can be ret
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">896</span>
+    <span class="phpdocumentor-element-found-in__line">890</span>
 
     </aside>
 
@@ -1185,7 +1231,7 @@ If set to 'silent', the class will register all error messages, which can be ret
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">debugOnce</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$mode</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+                    <span class="phpdocumentor-signature__name">debugOnce</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">bool|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$mode</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1194,7 +1240,7 @@ If set to 'silent', the class will register all error messages, which can be ret
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$mode</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
+                : <span class="phpdocumentor-signature__argument__return-type">bool|string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><p>The debug mode to set.</p>
@@ -1229,7 +1275,7 @@ If set to 'silent', the class will register all error messages, which can be ret
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">271</span>
+    <span class="phpdocumentor-element-found-in__line">273</span>
 
     </aside>
 
@@ -1290,7 +1336,7 @@ If set to 'silent', the class will register all error messages, which can be ret
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">147</span>
+    <span class="phpdocumentor-element-found-in__line">149</span>
 
     </aside>
 
@@ -1326,7 +1372,7 @@ If set to 'silent', the class will register all error messages, which can be ret
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">288</span>
+    <span class="phpdocumentor-element-found-in__line">290</span>
 
     </aside>
 
@@ -1366,7 +1412,7 @@ If set to 'silent', the class will register all error messages, which can be ret
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">309</span>
+    <span class="phpdocumentor-element-found-in__line">313</span>
 
     </aside>
 
@@ -1385,6 +1431,10 @@ If set to 'silent', the class will register all error messages, which can be ret
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">bool</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>True if the query was successful, false otherwise.</p>
+</section>
+
             </section>
 
 </article>
@@ -1402,7 +1452,7 @@ If set to 'silent', the class will register all error messages, which can be ret
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">377</span>
+    <span class="phpdocumentor-element-found-in__line">375</span>
 
     </aside>
 
@@ -1442,7 +1492,7 @@ If set to 'silent', the class will register all error messages, which can be ret
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">563</span>
+    <span class="phpdocumentor-element-found-in__line">559</span>
 
     </aside>
 
@@ -1494,7 +1544,7 @@ If set to 'silent', the class will register all error messages, which can be ret
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">574</span>
+    <span class="phpdocumentor-element-found-in__line">570</span>
 
     </aside>
 
@@ -1546,7 +1596,7 @@ If set to 'silent', the class will register all error messages, which can be ret
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">124</span>
+    <span class="phpdocumentor-element-found-in__line">126</span>
 
     </aside>
 
@@ -1599,7 +1649,7 @@ Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">912</span>
+    <span class="phpdocumentor-element-found-in__line">906</span>
 
     </aside>
 
@@ -1639,7 +1689,7 @@ Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">937</span>
+    <span class="phpdocumentor-element-found-in__line">931</span>
 
     </aside>
 
@@ -1647,7 +1697,7 @@ Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getDebugMode</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|null</span></code>
+                    <span class="phpdocumentor-signature__name">getDebugMode</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool|string</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1657,7 +1707,7 @@ Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.</p>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">string|null</span>
+        <span class="phpdocumentor-signature__response_type">bool|string</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>The debug mode value.</p>
 </section>
@@ -1679,7 +1729,7 @@ Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">696</span>
+    <span class="phpdocumentor-element-found-in__line">690</span>
 
     </aside>
 
@@ -1721,7 +1771,7 @@ Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">707</span>
+    <span class="phpdocumentor-element-found-in__line">701</span>
 
     </aside>
 
@@ -1763,7 +1813,7 @@ Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">589</span>
+    <span class="phpdocumentor-element-found-in__line">585</span>
 
     </aside>
 
@@ -1851,7 +1901,7 @@ Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">654</span>
+    <span class="phpdocumentor-element-found-in__line">650</span>
 
     </aside>
 
@@ -1859,7 +1909,7 @@ Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getLastInsertId</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|false</span></code>
+                    <span class="phpdocumentor-signature__name">getLastInsertId</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool|string</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1869,7 +1919,7 @@ Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.</p>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">string|false</span>
+        <span class="phpdocumentor-signature__response_type">bool|string</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>The last insert ID or false if there was an error.</p>
 </section>
@@ -1891,7 +1941,7 @@ Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">673</span>
+    <span class="phpdocumentor-element-found-in__line">667</span>
 
     </aside>
 
@@ -1948,7 +1998,7 @@ Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">718</span>
+    <span class="phpdocumentor-element-found-in__line">712</span>
 
     </aside>
 
@@ -1990,7 +2040,7 @@ Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">729</span>
+    <span class="phpdocumentor-element-found-in__line">723</span>
 
     </aside>
 
@@ -2032,7 +2082,7 @@ Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">740</span>
+    <span class="phpdocumentor-element-found-in__line">734</span>
 
     </aside>
 
@@ -2074,7 +2124,7 @@ Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">751</span>
+    <span class="phpdocumentor-element-found-in__line">745</span>
 
     </aside>
 
@@ -2116,7 +2166,7 @@ Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">762</span>
+    <span class="phpdocumentor-element-found-in__line">756</span>
 
     </aside>
 
@@ -2158,7 +2208,7 @@ Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">773</span>
+    <span class="phpdocumentor-element-found-in__line">767</span>
 
     </aside>
 
@@ -2200,7 +2250,7 @@ Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">784</span>
+    <span class="phpdocumentor-element-found-in__line">778</span>
 
     </aside>
 
@@ -2242,7 +2292,7 @@ Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">159</span>
+    <span class="phpdocumentor-element-found-in__line">161</span>
 
     </aside>
 
@@ -2294,7 +2344,7 @@ Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">230</span>
+    <span class="phpdocumentor-element-found-in__line">232</span>
 
     </aside>
 
@@ -2355,7 +2405,7 @@ Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">171</span>
+    <span class="phpdocumentor-element-found-in__line">173</span>
 
     </aside>
 
@@ -2407,7 +2457,7 @@ Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">794</span>
+    <span class="phpdocumentor-element-found-in__line">788</span>
 
     </aside>
 
@@ -2447,7 +2497,7 @@ Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">183</span>
+    <span class="phpdocumentor-element-found-in__line">185</span>
 
     </aside>
 
@@ -2499,7 +2549,7 @@ Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">195</span>
+    <span class="phpdocumentor-element-found-in__line">197</span>
 
     </aside>
 
@@ -2551,7 +2601,7 @@ Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">210</span>
+    <span class="phpdocumentor-element-found-in__line">212</span>
 
     </aside>
 
@@ -2603,7 +2653,7 @@ Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">89</span>
+    <span class="phpdocumentor-element-found-in__line">91</span>
 
     </aside>
 
@@ -2648,7 +2698,7 @@ Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">104</span>
+    <span class="phpdocumentor-element-found-in__line">106</span>
 
     </aside>
 
@@ -2701,7 +2751,7 @@ If it's an array, the columns will be joined with a comma.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">922</span>
+    <span class="phpdocumentor-element-found-in__line">916</span>
 
     </aside>
 
@@ -2709,7 +2759,7 @@ If it's an array, the columns will be joined with a comma.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">setDebug</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$mode</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">setDebug</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">bool|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$mode</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -2718,7 +2768,7 @@ If it's an array, the columns will be joined with a comma.</p>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$mode</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
+                : <span class="phpdocumentor-signature__argument__return-type">bool|string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><p>The debug mode to set.</p>
@@ -2745,7 +2795,7 @@ If it's an array, the columns will be joined with a comma.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">488</span>
+    <span class="phpdocumentor-element-found-in__line">484</span>
 
     </aside>
 
@@ -2802,7 +2852,7 @@ If it's an array, the columns will be joined with a comma.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">514</span>
+    <span class="phpdocumentor-element-found-in__line">510</span>
 
     </aside>
 
@@ -2859,7 +2909,7 @@ If it's an array, the columns will be joined with a comma.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">539</span>
+    <span class="phpdocumentor-element-found-in__line">535</span>
 
     </aside>
 
@@ -2916,7 +2966,7 @@ If it's an array, the columns will be joined with a comma.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">251</span>
+    <span class="phpdocumentor-element-found-in__line">253</span>
 
     </aside>
 
@@ -2987,7 +3037,7 @@ If it's an array, the conditions will be joined with AND.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">137</span>
+    <span class="phpdocumentor-element-found-in__line">139</span>
 
     </aside>
 
@@ -3032,6 +3082,58 @@ If it's an array, the conditions will be joined with AND.</p>
             -private
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_bindValues">
+        bindValues()
+        <a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#method_bindValues" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">942</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Binds placeholders values to a prepared statement.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">bindValues</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\PDOStatement">PDOStatement</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$query</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\PDOStatement">PDOStatement</abbr></span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$query</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\PDOStatement">PDOStatement</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The prepared statement to bind values to.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\PDOStatement">PDOStatement</abbr></span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The prepared statement with bound values.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_clear">
         clear()
         <a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#method_clear" class="headerlink"><i class="fas fa-link"></i></a>
@@ -3040,7 +3142,7 @@ If it's an array, the conditions will be joined with AND.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">947</span>
+    <span class="phpdocumentor-element-found-in__line">968</span>
 
     </aside>
 
@@ -3088,7 +3190,7 @@ If it's an array, the conditions will be joined with AND.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">967</span>
+    <span class="phpdocumentor-element-found-in__line">988</span>
 
     </aside>
 
@@ -3150,7 +3252,7 @@ If it's an array, the conditions will be joined with AND.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1114</span>
+    <span class="phpdocumentor-element-found-in__line">1135</span>
 
     </aside>
 
@@ -3185,7 +3287,7 @@ If it's an array, the conditions will be joined with AND.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1084</span>
+    <span class="phpdocumentor-element-found-in__line">1105</span>
 
     </aside>
 
@@ -3225,7 +3327,7 @@ If it's an array, the conditions will be joined with AND.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">995</span>
+    <span class="phpdocumentor-element-found-in__line">1016</span>
 
     </aside>
 
@@ -3265,7 +3367,7 @@ If it's an array, the conditions will be joined with AND.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1097</span>
+    <span class="phpdocumentor-element-found-in__line">1118</span>
 
     </aside>
 
@@ -3305,7 +3407,7 @@ If it's an array, the conditions will be joined with AND.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Query/QueryBuilder.php"><a href="files/src-query-querybuilder.html"><abbr title="src/Query/QueryBuilder.php">QueryBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1062</span>
+    <span class="phpdocumentor-element-found-in__line">1083</span>
 
     </aside>
 
@@ -3450,6 +3552,7 @@ If it's an array, the conditions will be joined with AND.</p>
                                                     <li><a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#property_debugOnceMode">$debugOnceMode<a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html"></li>
                                                     <li><a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#property_fields">$fields<a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html"></li>
                                                     <li><a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#property_from">$from<a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html"></li>
+                                                    <li><a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#property_lastInsertId">$lastInsertId<a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html"></li>
                                                     <li><a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#property_parameters">$parameters<a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html"></li>
                                                     <li><a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#property_placeholders">$placeholders<a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html"></li>
                                                     <li><a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#property_queryString">$queryString<a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html"></li>
@@ -3504,6 +3607,7 @@ If it's an array, the conditions will be joined with AND.</p>
                                             <li><a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#method_transactionRollback">transactionRollback()</a></li>
                                             <li><a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#method_update">update()</a></li>
                                             <li><a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#method_where">where()</a></li>
+                                            <li><a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#method_bindValues">bindValues()</a></li>
                                             <li><a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#method_clear">clear()</a></li>
                                             <li><a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#method_dumpDebug">dumpDebug()</a></li>
                                             <li><a href="classes/Migliori-PowerLitePdo-Query-QueryBuilder.html#method_getSqlForDelete">getSqlForDelete()</a></li>

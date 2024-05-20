@@ -127,7 +127,7 @@
     <section class="phpdocumentor-description"><p>The Db class is a database abstraction layer that provides a simple, consistent interface
 for interacting with different types of databases. It handles connection management, query execution,
 pagination and result processing, allowing developers to focus on the business logic of their application.</p>
-<p>Full documentation with code examples is available here: <a href="%5Bhttps://www.phpformbuilder.pro/documentation/php-pdo-database-class.php%5D">[https://www.phpformbuilder.pro/documentation/php-pdo-database-class.php]</a></p>
+<p>Full documentation with code examples is available here: <a href="%5Bhttps://www.powerlitepdo.com/%5D">[https://www.powerlitepdo.com/]</a></p>
 <p>The Db class is designed to be flexible and extensible, allowing developers to easily customize it
 to meet their specific needs. It supports multiple database types, including MySQL, PostgreSQL, Firebird,
 and Oracle, and can be easily extended to support additional databases.</p>
@@ -312,7 +312,7 @@ using only one column or an associative array using another column as a key.</dd
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Migliori-PowerLitePdo-Db.html#method_getDebugMode">getDebugMode()</a>
     <span>
-                                &nbsp;: string|null    </span>
+                                &nbsp;: bool|string    </span>
 </dt>
 <dd>Get the debug mode of the query builder.</dd>
 
@@ -326,7 +326,7 @@ using only one column or an associative array using another column as a key.</dd
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Migliori-PowerLitePdo-Db.html#method_getLastInsertId">getLastInsertId()</a>
     <span>
-                                &nbsp;: string|false    </span>
+                                &nbsp;: bool|string    </span>
 </dt>
 <dd>Get the last insert ID.</dd>
 
@@ -640,7 +640,7 @@ using only one column or an associative array using another column as a key.</dd
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">378</span>
+    <span class="phpdocumentor-element-found-in__line">379</span>
 
     </aside>
 
@@ -711,7 +711,7 @@ using only one column or an associative array using another column as a key.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">588</span>
+    <span class="phpdocumentor-element-found-in__line">589</span>
 
     </aside>
 
@@ -719,7 +719,7 @@ using only one column or an associative array using another column as a key.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">debugOnce</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$mode</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+                    <span class="phpdocumentor-signature__name">debugOnce</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">bool|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$mode</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -728,7 +728,7 @@ using only one column or an associative array using another column as a key.</p>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$mode</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
+                : <span class="phpdocumentor-signature__argument__return-type">bool|string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><p>The debug mode to set.</p>
@@ -759,7 +759,7 @@ using only one column or an associative array using another column as a key.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">361</span>
+    <span class="phpdocumentor-element-found-in__line">362</span>
 
     </aside>
 
@@ -767,7 +767,7 @@ using only one column or an associative array using another column as a key.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">delete</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$table</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;int|string, mixed&gt;|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$where</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool|int</span></code>
+                    <span class="phpdocumentor-signature__name">delete</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$table</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;int|string, mixed&gt;|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$where</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool|int</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -795,12 +795,12 @@ The keys represent the column names and the values represent the matching values
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$debug</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+                : <span class="phpdocumentor-signature__argument__return-type">bool|string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>null, off, on or silent.
-'off':    the delete is executed.
-'on':     the delete is not executed. The query is displayed.
+                    <section class="phpdocumentor-description"><p>false, true or 'silent'.
+false:    the delete is executed.
+true     the delete is not executed. The query is displayed.
 'silent': the delete is not executed. The query is registered then can be displayed using the getDebug() method.</p>
 </section>
 
@@ -833,7 +833,7 @@ The keys represent the column names and the values represent the matching values
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">515</span>
+    <span class="phpdocumentor-element-found-in__line">516</span>
 
     </aside>
 
@@ -885,7 +885,7 @@ The keys represent the column names and the values represent the matching values
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">526</span>
+    <span class="phpdocumentor-element-found-in__line">527</span>
 
     </aside>
 
@@ -937,7 +937,7 @@ The keys represent the column names and the values represent the matching values
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">424</span>
+    <span class="phpdocumentor-element-found-in__line">425</span>
 
     </aside>
 
@@ -945,7 +945,7 @@ The keys represent the column names and the values represent the matching values
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getColumns</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$table</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fetchParameters</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">PDO::FETCH_OBJ</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">getColumns</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$table</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fetchParameters</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">PDO::FETCH_OBJ</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -972,12 +972,12 @@ The keys represent the column names and the values represent the matching values
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$debug</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+                : <span class="phpdocumentor-signature__argument__return-type">bool|string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>null, off, on or silent.
-'off':    the production mode.
-'on':     The query is displayed.
+                    <section class="phpdocumentor-description"><p>false, true or 'silent'.
+false:    the production mode.
+true:     The query is displayed.
 'silent': The query is registered then can be displayed using the getDebug() method.</p>
 </section>
 
@@ -1022,7 +1022,7 @@ The keys represent the column names and the values represent the matching values
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">443</span>
+    <span class="phpdocumentor-element-found-in__line">444</span>
 
     </aside>
 
@@ -1030,7 +1030,7 @@ The keys represent the column names and the values represent the matching values
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getColumnsNames</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$table</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">getColumnsNames</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$table</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1048,12 +1048,12 @@ The keys represent the column names and the values represent the matching values
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$debug</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+                : <span class="phpdocumentor-signature__argument__return-type">bool|string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>null, off, on or silent.
-'off':    the production mode.
-'on':     The query is displayed.
+                    <section class="phpdocumentor-description"><p>false, true or 'silent'.
+false:    the production mode.
+true:     The query is displayed.
 'silent': The query is registered then can be displayed using the getDebug() method.</p>
 </section>
 
@@ -1086,7 +1086,7 @@ The keys represent the column names and the values represent the matching values
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">599</span>
+    <span class="phpdocumentor-element-found-in__line">600</span>
 
     </aside>
 
@@ -1126,7 +1126,7 @@ The keys represent the column names and the values represent the matching values
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">619</span>
+    <span class="phpdocumentor-element-found-in__line">620</span>
 
     </aside>
 
@@ -1134,7 +1134,7 @@ The keys represent the column names and the values represent the matching values
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getDebugMode</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|null</span></code>
+                    <span class="phpdocumentor-signature__name">getDebugMode</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool|string</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1144,7 +1144,7 @@ The keys represent the column names and the values represent the matching values
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">string|null</span>
+        <span class="phpdocumentor-signature__response_type">bool|string</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>The debug mode of the query builder.</p>
 </section>
@@ -1166,7 +1166,7 @@ The keys represent the column names and the values represent the matching values
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">541</span>
+    <span class="phpdocumentor-element-found-in__line">542</span>
 
     </aside>
 
@@ -1254,7 +1254,7 @@ The keys represent the column names and the values represent the matching values
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">556</span>
+    <span class="phpdocumentor-element-found-in__line">557</span>
 
     </aside>
 
@@ -1262,7 +1262,7 @@ The keys represent the column names and the values represent the matching values
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getLastInsertId</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|false</span></code>
+                    <span class="phpdocumentor-signature__name">getLastInsertId</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool|string</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1272,7 +1272,7 @@ The keys represent the column names and the values represent the matching values
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">string|false</span>
+        <span class="phpdocumentor-signature__response_type">bool|string</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>The last insert ID or false if there was an error.</p>
 </section>
@@ -1294,7 +1294,7 @@ The keys represent the column names and the values represent the matching values
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">568</span>
+    <span class="phpdocumentor-element-found-in__line">569</span>
 
     </aside>
 
@@ -1435,7 +1435,7 @@ The keys represent the column names and the values represent the matching values
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">465</span>
+    <span class="phpdocumentor-element-found-in__line">466</span>
 
     </aside>
 
@@ -1443,7 +1443,7 @@ The keys represent the column names and the values represent the matching values
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getTables</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">getTables</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">bool|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1452,12 +1452,12 @@ The keys represent the column names and the values represent the matching values
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$debug</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+                : <span class="phpdocumentor-signature__argument__return-type">bool|string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>null, off, on or silent.
-'off':    the production mode.
-'on':     The query is displayed.
+                    <section class="phpdocumentor-description"><p>false, true or 'silent'.
+false:    the production mode.
+true:     The query is displayed.
 'silent': The query is registered then can be displayed using the getDebug() method.</p>
 </section>
 
@@ -1490,7 +1490,7 @@ The keys represent the column names and the values represent the matching values
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">310</span>
+    <span class="phpdocumentor-element-found-in__line">311</span>
 
     </aside>
 
@@ -1498,7 +1498,7 @@ The keys represent the column names and the values represent the matching values
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">insert</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$table</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$values</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool|int</span></code>
+                    <span class="phpdocumentor-signature__name">insert</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$table</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$values</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool|int</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1526,12 +1526,12 @@ e.g. ['name' =&gt; 'Cathy', 'city' =&gt; 'Cardiff']</p>
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$debug</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+                : <span class="phpdocumentor-signature__argument__return-type">bool|string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>null, off, on or silent.
-'off':    the insert is executed.
-'on':     the insert is not executed. The query is displayed.
+                    <section class="phpdocumentor-description"><p>false, true or 'silent'.
+false:    the insert is executed.
+true:     the insert is not executed. The query is displayed.
 'silent': the insert is not executed. The query is registered then can be displayed using the getDebug() method.</p>
 </section>
 
@@ -1564,7 +1564,7 @@ e.g. ['name' =&gt; 'Cathy', 'city' =&gt; 'Cardiff']</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">578</span>
+    <span class="phpdocumentor-element-found-in__line">579</span>
 
     </aside>
 
@@ -1604,7 +1604,7 @@ e.g. ['name' =&gt; 'Cathy', 'city' =&gt; 'Cardiff']</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">92</span>
+    <span class="phpdocumentor-element-found-in__line">93</span>
 
     </aside>
 
@@ -1612,7 +1612,7 @@ e.g. ['name' =&gt; 'Cathy', 'city' =&gt; 'Cardiff']</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">query</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$sql</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$placeholders</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool|int</span></code>
+                    <span class="phpdocumentor-signature__name">query</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$sql</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$placeholders</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool|int</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1633,16 +1633,18 @@ e.g. ['name' =&gt; 'Cathy', 'city' =&gt; 'Cardiff']</p>
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string, mixed&gt;</span>
                  = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>An associative array of placeholders and their values.</p>
+                    <section class="phpdocumentor-description"><p>An indexed or associative array to store the placeholders used in the query.</p>
 </section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$debug</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+                : <span class="phpdocumentor-signature__argument__return-type">bool|string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>false, true or silent.</p>
+</section>
+
             </dd>
             </dl>
 
@@ -1672,7 +1674,7 @@ e.g. ['name' =&gt; 'Cathy', 'city' =&gt; 'Cardiff']</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">116</span>
+    <span class="phpdocumentor-element-found-in__line">117</span>
 
     </aside>
 
@@ -1680,7 +1682,7 @@ e.g. ['name' =&gt; 'Cathy', 'city' =&gt; 'Cardiff']</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">queryRow</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$sql</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$placeholders</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fetchParameters</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">PDO::FETCH_OBJ</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">queryRow</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$sql</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$placeholders</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fetchParameters</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">PDO::FETCH_OBJ</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1701,7 +1703,7 @@ e.g. ['name' =&gt; 'Cathy', 'city' =&gt; 'Cardiff']</p>
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string, mixed&gt;</span>
                  = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>An associative array of placeholders and their values.</p>
+                    <section class="phpdocumentor-description"><p>An indexed or associative array to store the placeholders used in the query.</p>
 </section>
 
             </dd>
@@ -1716,12 +1718,12 @@ e.g. ['name' =&gt; 'Cathy', 'city' =&gt; 'Cardiff']</p>
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$debug</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+                : <span class="phpdocumentor-signature__argument__return-type">bool|string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>null, off, on or silent.
-'off':    the production mode.
-'on':     The query is displayed.
+                    <section class="phpdocumentor-description"><p>false, true or 'silent'.
+false:    the production mode.
+true:     The query is displayed.
 'silent': The query is registered then can be displayed using the getDebug() method.</p>
 </section>
 
@@ -1754,7 +1756,7 @@ e.g. ['name' =&gt; 'Cathy', 'city' =&gt; 'Cardiff']</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">140</span>
+    <span class="phpdocumentor-element-found-in__line">141</span>
 
     </aside>
 
@@ -1762,7 +1764,7 @@ e.g. ['name' =&gt; 'Cathy', 'city' =&gt; 'Cardiff']</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">queryValue</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$sql</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$placeholders</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">queryValue</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$sql</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$placeholders</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1774,7 +1776,7 @@ e.g. ['name' =&gt; 'Cathy', 'city' =&gt; 'Cardiff']</p>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The SQL query to execute.</p>
+                    <section class="phpdocumentor-description"><p>The SQL query to execute.A</p>
 </section>
 
             </dd>
@@ -1783,18 +1785,18 @@ e.g. ['name' =&gt; 'Cathy', 'city' =&gt; 'Cardiff']</p>
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string, mixed&gt;</span>
                  = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>An associative array of placeholders and their values.</p>
+                    <section class="phpdocumentor-description"><p>An indexed or associative array to store the placeholders used in the query.</p>
 </section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$debug</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+                : <span class="phpdocumentor-signature__argument__return-type">bool|string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>null, off, on or silent.
-'off':    the production mode.
-'on':     The query is displayed.
+                    <section class="phpdocumentor-description"><p>false, true or 'silent'.
+false:    the production mode.
+true:     The query is displayed.
 'silent': The query is registered then can be displayed using the getDebug() method.</p>
 </section>
 
@@ -1827,7 +1829,7 @@ e.g. ['name' =&gt; 'Cathy', 'city' =&gt; 'Cardiff']</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">174</span>
+    <span class="phpdocumentor-element-found-in__line">175</span>
 
     </aside>
 
@@ -1835,7 +1837,7 @@ e.g. ['name' =&gt; 'Cathy', 'city' =&gt; 'Cardiff']</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">select</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$from</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|array&lt;string|int, string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fields</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;int|string, mixed&gt;|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$where</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string, bool|int|string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$parameters</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool|int</span></code>
+                    <span class="phpdocumentor-signature__name">select</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$from</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|array&lt;string|int, string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fields</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;int|string, mixed&gt;|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$where</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string, bool|int|string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$parameters</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool|int</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1882,12 +1884,12 @@ If it's an array, the conditions will be joined with AND.</p>
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$debug</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+                : <span class="phpdocumentor-signature__argument__return-type">bool|string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>null, off, on or silent.
-'off':    the production mode.
-'on':     The query is displayed.
+                    <section class="phpdocumentor-description"><p>false, true or 'silent'.
+false:    the production mode.
+true:     The query is displayed.
 'silent': The query is registered then can be displayed using the getDebug() method.</p>
 </section>
 
@@ -1920,7 +1922,7 @@ If it's an array, the conditions will be joined with AND.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">205</span>
+    <span class="phpdocumentor-element-found-in__line">206</span>
 
     </aside>
 
@@ -1928,7 +1930,7 @@ If it's an array, the conditions will be joined with AND.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">selectCount</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$from</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|array&lt;string|int, string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fields</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[&#039;*&#039; =&gt; &#039;rowsCount&#039;]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;int|string, mixed&gt;|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$where</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string, bool|int|string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$parameters</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">selectCount</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$from</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|array&lt;string|int, string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fields</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[&#039;*&#039; =&gt; &#039;rowsCount&#039;]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;int|string, mixed&gt;|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$where</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string, bool|int|string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$parameters</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1975,12 +1977,12 @@ If it's an array, the conditions will be joined with AND.</p>
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$debug</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+                : <span class="phpdocumentor-signature__argument__return-type">bool|string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>null, off, on or silent.
-'off':    the production mode.
-'on':     The query is displayed.
+                    <section class="phpdocumentor-description"><p>false, true or 'silent'.
+false:    the production mode.
+true:     The query is displayed.
 'silent': The query is registered then can be displayed using the getDebug() method.</p>
 </section>
 
@@ -2013,7 +2015,7 @@ If it's an array, the conditions will be joined with AND.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">253</span>
+    <span class="phpdocumentor-element-found-in__line">254</span>
 
     </aside>
 
@@ -2021,7 +2023,7 @@ If it's an array, the conditions will be joined with AND.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">selectRow</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$from</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|array&lt;string|int, string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fields</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;*&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;int|string, mixed&gt;|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$where</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fetchParameters</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">PDO::FETCH_OBJ</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">selectRow</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$from</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|array&lt;string|int, string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fields</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;*&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;int|string, mixed&gt;|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$where</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fetchParameters</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">PDO::FETCH_OBJ</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -2068,12 +2070,12 @@ If it's an array, the conditions will be joined with AND.</p>
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$debug</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+                : <span class="phpdocumentor-signature__argument__return-type">bool|string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>null, off, on or silent.
-'off':    the production mode.
-'on':     The query is displayed.
+                    <section class="phpdocumentor-description"><p>false, true or 'silent'.
+false:    the production mode.
+true:     The query is displayed.
 'silent': The query is registered then can be displayed using the getDebug() method.</p>
 </section>
 
@@ -2106,7 +2108,7 @@ If it's an array, the conditions will be joined with AND.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">279</span>
+    <span class="phpdocumentor-element-found-in__line">280</span>
 
     </aside>
 
@@ -2114,7 +2116,7 @@ If it's an array, the conditions will be joined with AND.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">selectValue</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$from</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|array&lt;string|int, string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$field</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;int|string, mixed&gt;|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$where</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">selectValue</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$from</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|array&lt;string|int, string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$field</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;int|string, mixed&gt;|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$where</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -2152,12 +2154,12 @@ If it's an array, the conditions will be joined with AND.</p>
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$debug</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+                : <span class="phpdocumentor-signature__argument__return-type">bool|string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>null, off, on or silent.
-'off':    the production mode.
-'on':     The query is displayed.
+                    <section class="phpdocumentor-description"><p>false, true or 'silent'.
+false:    the production mode.
+true:     The query is displayed.
 'silent': The query is registered then can be displayed using the getDebug() method.</p>
 </section>
 
@@ -2190,7 +2192,7 @@ If it's an array, the conditions will be joined with AND.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">609</span>
+    <span class="phpdocumentor-element-found-in__line">610</span>
 
     </aside>
 
@@ -2198,7 +2200,7 @@ If it's an array, the conditions will be joined with AND.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">setDebug</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$mode</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">setDebug</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">bool|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$mode</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -2207,7 +2209,7 @@ If it's an array, the conditions will be joined with AND.</p>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$mode</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
+                : <span class="phpdocumentor-signature__argument__return-type">bool|string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><p>The debug mode to set. Pass <code class="prettyprint">null</code> to disable debug mode.</p>
@@ -2234,7 +2236,7 @@ If it's an array, the conditions will be joined with AND.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">480</span>
+    <span class="phpdocumentor-element-found-in__line">481</span>
 
     </aside>
 
@@ -2291,7 +2293,7 @@ If it's an array, the conditions will be joined with AND.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">492</span>
+    <span class="phpdocumentor-element-found-in__line">493</span>
 
     </aside>
 
@@ -2348,7 +2350,7 @@ If it's an array, the conditions will be joined with AND.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">504</span>
+    <span class="phpdocumentor-element-found-in__line">505</span>
 
     </aside>
 
@@ -2405,7 +2407,7 @@ If it's an array, the conditions will be joined with AND.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Db.php"><a href="files/src-db.html"><abbr title="src/Db.php">Db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">336</span>
+    <span class="phpdocumentor-element-found-in__line">337</span>
 
     </aside>
 
@@ -2413,7 +2415,7 @@ If it's an array, the conditions will be joined with AND.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">update</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$table</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$values</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;int|string, mixed&gt;|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$where</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool|int</span></code>
+                    <span class="phpdocumentor-signature__name">update</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$table</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$values</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;int|string, mixed&gt;|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$where</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool|int</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -2451,12 +2453,12 @@ If it's an array, the conditions will be joined with AND.</p>
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$debug</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+                : <span class="phpdocumentor-signature__argument__return-type">bool|string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>null, off, on or silent.
-'off':    the update is executed.
-'on':     the update is not executed. The query is displayed.
+                    <section class="phpdocumentor-description"><p>false, true or 'silent'.
+false:    the update is executed.
+true     the update is not executed. The query is displayed.
 'silent': the update is not executed. The query is registered then can be displayed using the getDebug() method.</p>
 </section>
 
