@@ -40,14 +40,14 @@ $pagination = $container->get(Pagination::class);
 
         <?php
         $from = 'users'; // The SELECT FROM clause
-        $fields = ['id', 'username', 'email']; // The columns you want to select
+        $fields = ['id', 'name', 'email']; // The columns you want to select
         $where = ['status' => 'active']; // The conditions for the WHERE clause
 
         $pagination->select($from, $fields, $where);
 
         $records = [];
         while ($record = $pagination->fetch()) {
-            $records[] = $record->id . ', ' . $record->username . ', ' . $record->email;
+            $records[] = $record->id . ', ' . $record->name . ', ' . $record->email;
         }
         ?>
 
@@ -60,14 +60,14 @@ $container = require_once __DIR__ . '/../src/bootstrap.php';
 $pagination = $container->get(Pagination::class);
 
 $from = 'users'; // The SELECT FROM clause
-$fields = ['id', 'username', 'email']; // The columns you want to select
+$fields = ['id', 'name', 'email']; // The columns you want to select
 $where = ['status' => 'active']; // The conditions for the WHERE clause
 
 $pagination->select($from, $fields, $where);
 
 $records = [];
 while ($record = $db->fetch()) {
-    $records[] = $record->id . ', ' . $record->username . ', ' . $record->email;
+    $records[] = $record->id . ', ' . $record->name . ', ' . $record->email;
 }
 
 $url = '/examples/pagination-examples.php'; // The URL for the pagination links
@@ -106,14 +106,14 @@ echo $pagination->pagine($url);</code></pre>
         ]);
 
         $from = 'users'; // The SELECT FROM clause
-        $fields = ['id', 'username', 'email']; // The columns you want to select
+        $fields = ['id', 'name', 'email']; // The columns you want to select
         $where = ['status' => 'active']; // The conditions for the WHERE clause
 
         $pagination->select($from, $fields, $where);
 
         $records2 = [];
         while ($record = $pagination->fetch()) {
-            $records2[] = $record->id . ', ' . $record->username . ', ' . $record->email;
+            $records2[] = $record->id . ', ' . $record->name . ', ' . $record->email;
         }
         ?>
 
@@ -134,14 +134,14 @@ $pagination->setOptions([
 ]);
 
 $from = 'users'; // The SELECT FROM clause
-$fields = ['id', 'username', 'email']; // The columns you want to select
+$fields = ['id', 'name', 'email']; // The columns you want to select
 $where = ['status' => 'active']; // The conditions for the WHERE clause
 
 $pagination->select($from, $fields, $where);
 
 $records2 = [];
 while ($record = $db->fetch()) {
-    $records2[] = $record->id . ', ' . $record->username . ', ' . $record->email;
+    $records2[] = $record->id . ', ' . $record->name . ', ' . $record->email;
 }
 
 $url = '/examples/pagination-examples'; // The URL for the pagination links

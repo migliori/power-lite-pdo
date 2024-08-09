@@ -6,6 +6,7 @@ namespace Migliori\PowerLitePdo\Result;
 
 use PDOStatement;
 use PDO;
+
 class Result
 {
     private ?PDOStatement $pdoStatement = null;
@@ -37,7 +38,7 @@ class Result
      * @param int $fetch_parameters The PDO fetch style record options
      * @return mixed The next row of the result set or false if we reached the end
      */
-    public function fetch(int $fetch_parameters = PDO::FETCH_OBJ): mixed
+    public function fetch(int $fetch_parameters = PDO::FETCH_OBJ)
     {
         if (!$this->pdoStatement instanceof PDOStatement) {
             return false;

@@ -20,7 +20,7 @@ class Parameters
      *
      * @var int|null|string $limit The limit value for the query.
      */
-    private $limit = null;
+    private $limit;
 
     /**
      * Add a parameter to the query.

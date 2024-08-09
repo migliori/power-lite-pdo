@@ -47,7 +47,10 @@ class QueryBuilder
 
     private Result $result;
 
-    private bool|string $lastInsertId;
+    /**
+     * @var bool|string $lastInsertId
+     */
+    private $lastInsertId;
 
     private string $table;
 
@@ -69,11 +72,15 @@ class QueryBuilder
      *
      * If set to true, the class will display detailed error messages.
      * If set to 'silent', the class will register all error messages, which can be retrieved using the getDebug() method.
+     *
+     * @var bool|string $debugOnceMode
      */
+    private $debugOnceMode = false;
 
-    private bool|string $debugOnceMode = false;
-
-    private bool|string $debugGlobalMode = false;
+    /**
+     * @var bool|string $debugGlobalMode
+     */
+    private $debugGlobalMode = false;
 
     /**
      * Constructor for the QueryBuilder class.
@@ -99,8 +106,8 @@ class QueryBuilder
     /**
      * Set the columns to select from the table.
      *
-     * @param string|array<string> $fields The columns to select. Can be a string or an array of strings.
-     *                             If it's an array, the columns will be joined with a comma.
+     * @param  string|array<string> $fields The columns to select. Can be a string or an array of strings.
+     *                                      If it's an array, the columns will be joined with a comma.
      * @return self The current instance of the QueryBuilder.
      */
     public function select($fields): self
@@ -119,8 +126,8 @@ class QueryBuilder
     /**
      * Set the table with optional JOIN clauses to select from.
      *
-     * @param string $from The SQL FROM statement with optional joins.
-     *                     Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.
+     * @param  string $from The SQL FROM statement with optional joins.
+     *                      Example: 'table1 INNER JOIN table2 ON table1.id = table2.id'.
      * @return $this The current instance of the QueryBuilder.
      */
     public function from(string $from): self
@@ -132,8 +139,8 @@ class QueryBuilder
     /**
      * Set the WHERE clause for the query.
      *
-     * @param array<int|string, mixed>|string $where The WHERE clause. Can be a string or an array of conditions.
-     *                     If it's an array, the conditions will be joined with AND.
+     * @param  array<int|string, mixed>|string $where The WHERE clause. Can be a string or an array of conditions.
+     *                                                If it's an array, the conditions will be joined with AND.
      * @return self The current instance of the QueryBuilder.
      */
     public function where($where): self
@@ -155,7 +162,7 @@ class QueryBuilder
     /**
      * Set the GROUP BY clause for the query.
      *
-     * @param string $groupBy The GROUP BY clause.
+     * @param  string $groupBy The GROUP BY clause.
      * @return self The current instance of the QueryBuilder.
      */
     public function groupBy(string $groupBy): self
@@ -167,7 +174,7 @@ class QueryBuilder
     /**
      * Set the LIMIT clause for the query.
      *
-     * @param int|string $limit The LIMIT clause.
+     * @param  int|string $limit The LIMIT clause.
      * @return self The current instance of the QueryBuilder.
      */
     public function limit($limit): self
@@ -179,7 +186,7 @@ class QueryBuilder
     /**
      * Set the ORDER BY clause for the query.
      *
-     * @param string $orderBy The ORDER BY clause.
+     * @param  string $orderBy The ORDER BY clause.
      * @return self The current instance of the QueryBuilder.
      */
     public function orderBy(string $orderBy): self
@@ -191,7 +198,7 @@ class QueryBuilder
     /**
      * Set the parameters for the query.
      *
-     * @param array<string, bool|int|string> $parameters An associative array of parameter names and values.
+     * @param  array<string, bool|int|string> $parameters An associative array of parameter names and values.
      * @return self The QueryBuilder instance.
      */
     public function parameters(array $parameters): self
@@ -206,7 +213,7 @@ class QueryBuilder
     /**
      * Set the placeholders for the query.
      *
-     * @param array<int|string, mixed> $placeholders An indexed or associative array to store the placeholders used in the query.
+     * @param  array<int|string, mixed> $placeholders An indexed or associative array to store the placeholders used in the query.
      * @return self The QueryBuilder instance.
      */
     public function placeholders(array $placeholders): self
@@ -225,8 +232,8 @@ class QueryBuilder
     /**
      * Insert a new row into the specified table with the given values.
      *
-     * @param string $table The name of the table to insert into.
-     * @param array<string, mixed> $values An associative array of column-value pairs to insert.
+     * @param  string               $table  The name of the table to insert into.
+     * @param  array<string, mixed> $values An associative array of column-value pairs to insert.
      * @return self The QueryBuilder instance for method chaining.
      */
     public function insert(string $table, array $values): self
@@ -244,10 +251,10 @@ class QueryBuilder
     /**
      * Update records in the specified table.
      *
-     * @param string $table The name of the table to update.
-     * @param array<string, mixed> $values An associative array of column-value pairs to update.
-     * @param array<int|string, mixed>|string $where The condition to filter the records to be updated. Can be a string or an array of conditions.
-     *                     If it's an array, the conditions will be joined with AND.
+     * @param  string                          $table  The name of the table to update.
+     * @param  array<string, mixed>            $values An associative array of column-value pairs to update.
+     * @param  array<int|string, mixed>|string $where  The condition to filter the records to be updated. Can be a string or an array of conditions.
+     *                                                 If it's an array, the conditions will be joined with AND.
      * @return self The current instance of the QueryBuilder.
      */
     public function update(string $table, array $values, $where): self
@@ -266,8 +273,8 @@ class QueryBuilder
     /**
      * Deletes records from the specified table based on the given conditions.
      *
-     * @param string $table The name of the table to delete records from.
-     * @param array<int|string, mixed>|string $where The condition(s) to be used in the delete query.
+     * @param  string                          $table The name of the table to delete records from.
+     * @param  array<int|string, mixed>|string $where The condition(s) to be used in the delete query.
      * @return self The current instance of the QueryBuilder.
      */
     public function delete(string $table, $where): self
@@ -312,6 +319,9 @@ class QueryBuilder
      */
     public function executeQuery(): bool
     {
+        $query = null; // Initialize $query to null
+        $sql = '';
+
         try {
             // Build the SQL query
             $sql = $this->queryType === 'RAW' ? $this->rawQuery : $this->getSqlForSelect();
@@ -379,6 +389,9 @@ class QueryBuilder
 
         $pdo = $this->connection->getPdo();
 
+        // Initialize the query variable
+        $query = null;
+
         // Set the variable initial values
         $time  = false;
 
@@ -388,9 +401,9 @@ class QueryBuilder
         // Is there already a transaction pending? No nested transactions in MySQL!
         $inTransaction = $pdo->inTransaction();
 
-        try {
-            $isSqlAutoCommit = Utilities::isSqlAutoCommit($sql);
+        $isSqlAutoCommit = Utilities::isSqlAutoCommit($sql);
 
+        try {
             // Prepare the query
             $query = $pdo->prepare($sql);
 
@@ -418,7 +431,7 @@ class QueryBuilder
             $affectedRows = $query->rowCount();
 
             // register the lastInsertId if the driver supports it and the query is an INSERT
-            if ($this->connection->driverSupportsLastInsertId() && ($this->queryType == 'INSERT' || ($this->queryType == 'RAW' && strpos($this->rawQuery, 'INSERT') !== false))) {
+            if ($this->connection->driverSupportsLastInsertId() && ($this->queryType === 'INSERT' || ($this->queryType === 'RAW' && strpos($this->rawQuery, 'INSERT') !== false))) {
                 $this->lastInsertId = $pdo->lastInsertId();
             }
 
@@ -459,7 +472,7 @@ class QueryBuilder
             throw new QueryBuilderException($errorMessage);
         } catch (Exception $e) { // If there was an error...
             // Rollback the transaction
-            if (!$inTransaction && isset($isSqlAutoCommit) && !$isSqlAutoCommit && $pdo instanceof PDO) {
+            if (!$inTransaction && !$isSqlAutoCommit && $pdo instanceof PDO) {
                 $pdo->rollback();
             }
 
@@ -553,7 +566,7 @@ class QueryBuilder
     /**
      * Fetches the next row from the result set as an object or an array.
      *
-     * @param int $fetch_parameters The fetch style to use. Default is \PDO::FETCH_OBJ.
+     * @param  int $fetch_parameters The fetch style to use. Default is \PDO::FETCH_OBJ.
      * @return mixed The fetched row as an object or an array, depending on the fetch style.
      */
     public function fetch(int $fetch_parameters = PDO::FETCH_OBJ)
@@ -564,7 +577,7 @@ class QueryBuilder
     /**
      * Fetches all rows from the database using the specified fetch mode.
      *
-     * @param int $fetch_parameters The fetch mode to use. Defaults to \PDO::FETCH_OBJ.
+     * @param  int $fetch_parameters The fetch mode to use. Defaults to \PDO::FETCH_OBJ.
      * @return mixed An array of rows fetched from the database.
      */
     public function fetchAll(int $fetch_parameters = PDO::FETCH_OBJ)
@@ -575,11 +588,11 @@ class QueryBuilder
     /**
      * This function returns records from a SQL query as an HTML table.
      *
-     * @param array<mixed> $records The records set - can be an array or array of objects according to the fetch parameters.
-     * @param bool $showCount (Optional) true if you want to show the row count, false if you do not want to show the count.
-     * @param string|null $tableAttr (Optional) Comma separated attributes for the table. e.g: 'class=my-class, style=color:#222'.
-     * @param string|null $thAttr (Optional) Comma separated attributes for the header row. e.g: 'class=my-class, style=font-weight:bold'.
-     * @param string|null $tdAttr (Optional) Comma separated attributes for the cells. e.g: 'class=my-class, style=font-weight:normal'.
+     * @param  array<mixed> $records   The records set - can be an array or array of objects according to the fetch parameters.
+     * @param  bool         $showCount (Optional) true if you want to show the row count, false if you do not want to show the count.
+     * @param  string|null  $tableAttr (Optional) Comma separated attributes for the table. e.g: 'class=my-class, style=color:#222'.
+     * @param  string|null  $thAttr    (Optional) Comma separated attributes for the header row. e.g: 'class=my-class, style=font-weight:bold'.
+     * @param  string|null  $tdAttr    (Optional) Comma separated attributes for the cells. e.g: 'class=my-class, style=font-weight:normal'.
      * @return string HTML containing a table with all records listed.
      */
     public function getHTML(
@@ -662,6 +675,7 @@ class QueryBuilder
 
     /**
      * Get the maximum value from a specific table field.
+     *
      * @return mixed the field value or false if no value is found.
      */
     public function getMaximumValue(string $table, string $field)
@@ -791,6 +805,12 @@ class QueryBuilder
         $time   = false;
 
         $pdo = $this->connection->getPdo();
+
+        // Initialize the query variable
+        $sql = '';
+
+        $numRowsQuery = null;
+
         try {
             // default: will send the query and fetch all records to count them
             $useSelectCount = false;
@@ -884,7 +904,7 @@ class QueryBuilder
     /**
      * Sets the debug mode for the query builder.
      *
-     * @param bool|string $mode The debug mode to set.
+     * @param  bool|string $mode The debug mode to set.
      * @return self The current instance of the QueryBuilder.
      */
     public function debugOnce($mode): self
@@ -936,10 +956,10 @@ class QueryBuilder
     /**
      * Binds placeholders values to a prepared statement.
      *
-     * @param PDOStatement $query The prepared statement to bind values to.
+     * @param PDOStatement $pdoStatement The prepared statement to bind values to.
      * @return PDOStatement The prepared statement with bound values.
      */
-    private function bindValues(PDOStatement $query): PDOStatement
+    private function bindValues(PDOStatement $pdoStatement): PDOStatement
     {
         $index = 1; // Start index for unnamed parameters
         foreach ($this->placeholders as $key => $value) {
@@ -949,15 +969,15 @@ class QueryBuilder
             // Check if we are dealing with named or unnamed parameters
             if (is_string($key)) {
                 // Bind the placeholder and value to the query
-                $query->bindValue($key, $value, $dataType);
+                $pdoStatement->bindValue($key, $value, $dataType);
             } else {
                 // Bind the value to the query at the current index for unnamed parameters
-                $query->bindValue($index, $value, $dataType);
-                $index++;
+                $pdoStatement->bindValue($index, $value, $dataType);
+                ++$index;
             }
         }
 
-        return $query;
+        return $pdoStatement;
     }
 
     /**
@@ -981,16 +1001,16 @@ class QueryBuilder
     /**
      * Dumps the debug information for the query builder.
      *
-     * @param ?PDOStatement $pdoStatement The PDOStatement object representing the query.
-     * @param int|float|null $time The execution time of the query.
-     * @param ?string $errorMessage The error message, if any.
+     * @param ?PDOStatement  $pdoStatement The PDOStatement object representing the query.
+     * @param int|float|null $time         The execution time of the query.
+     * @param ?string        $errorMessage The error message, if any.
      */
     private function dumpDebug(
         ?PDOStatement $pdoStatement,
         $time,
         ?string $errorMessage = null
     ): void {
-        $activeDebugMode = $this->debugOnceMode !== false? $this->debugOnceMode: $this->debugGlobalMode;
+        $activeDebugMode = $this->debugOnceMode !== false ? $this->debugOnceMode : $this->debugGlobalMode;
         if ($activeDebugMode !== false) {
             $interpolatedSql = '';
 
@@ -1051,7 +1071,9 @@ class QueryBuilder
         }
 
         if ($this->connection->getDriver() === 'firebird') {
-            return implode('', [
+            return implode(
+                '',
+                [
                 $sql->select,
                 $sql->limit,
                 $sql->distinct,
@@ -1060,10 +1082,13 @@ class QueryBuilder
                 $sql->where,
                 $sql->groupBy,
                 $sql->orderBy
-            ]);
+                ]
+            );
         }
 
-        return implode('', [
+        return implode(
+            '',
+            [
             $sql->select,
             $sql->distinct,
             $sql->fields,
@@ -1072,7 +1097,8 @@ class QueryBuilder
             $sql->groupBy,
             $sql->orderBy,
             $sql->limit
-        ]);
+            ]
+        );
     }
 
     /**
