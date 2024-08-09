@@ -2,6 +2,7 @@
     "name": "migliori/power-lite-pdo",
     "description": "PowerLitePdo is a PDO wrapper that provides a simple and powerful way to interact with a database.",
     "type": "library",
+    "version": "1.0.0",
     "keywords":[
         "pdo",
         "database",
