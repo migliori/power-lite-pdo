@@ -6,7 +6,7 @@
 [PowerLite PDO](https://www.powerlitepdo.com) is a lightweight, powerful PHP library that provides a simple and efficient way to interact with databases using PHP Data Objects (PDO).
 It supports multiple database drivers and includes features like easy connection management, query execution, result handling and pagination.
 
-[![PowerLite PDO](https://www.powerlitepdo.com/images/powerlite-pdo-logo-horizontal_hub35d7904902ab68b0689921e5207cfe8_6821_960x320_resize_q75_h2_box_3.webp)](https://www.powerlitepdo.com)
+[![PowerLite PDO](https://www.powerlitepdo.com/images/powerlite-pdo-logo-horizontal.77bd9d4b320ef4747c625e729a75ec4b.png)](https://www.powerlitepdo.com)
 
 ## Table of Contents
 
