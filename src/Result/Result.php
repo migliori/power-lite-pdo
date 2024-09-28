@@ -53,7 +53,7 @@ class Result
      * @param int $fetch_parameters The fetch style to use. Defaults to \PDO::FETCH_OBJ.
      * @return mixed An array containing all rows from the result set, or false on failure.
      */
-    public function fetchAll(int $fetch_parameters = PDO::FETCH_OBJ): mixed
+    public function fetchAll(int $fetch_parameters = PDO::FETCH_OBJ)
     {
         if (!$this->pdoStatement instanceof PDOStatement) {
             return false;
