@@ -140,6 +140,103 @@ $output2 = $db->convertToSimpleArray($result, 'email', 'name');
         </div>
     </article>
 
+    <!-- ============================================
+    =                   Example 3                   =
+    ============================================= -->
+
+    <article class="container py-5">
+        <h2 class="mb-3">Example 3<br><small class="text-black-50">Using transactions to ensure data integrity</small></h2>
+
+        <?php
+        // Example: Transfer points from one user to another using a transaction
+        $fromUserId = 3;
+        $toUserId = 5;
+        $points = 10;
+
+        $success = false;
+        $message = '';
+
+        try {
+            // Begin the transaction
+            $db->transactionBegin();
+
+            // Deduct points from the first user
+            $values = ['status' => 'inactive'];
+            $where = ['id' => $fromUserId];
+            $db->update('users', $values, $where);
+
+            // Add points to the second user
+            $values = ['status' => 'active'];
+            $where = ['id' => $toUserId];
+            $db->update('users', $values, $where);
+
+            // Commit the transaction if everything is successful
+            $db->transactionCommit();
+
+            $success = true;
+            $message = "Transaction completed successfully! User $fromUserId status changed to inactive, User $toUserId status changed to active.";
+        } catch (Exception $e) {
+            // Rollback the transaction if something went wrong
+            $db->transactionRollback();
+
+            $message = "Transaction failed and rolled back: " . $e->getMessage();
+        }
+        ?>
+
+        <pre><code class="language-php">&lt;?php
+
+use Migliori\PowerLitePdo\Db;
+
+$container = require_once __DIR__ . '/../src/bootstrap.php';
+
+$db = $container->get(Db::class);
+
+// Example: Transfer points from one user to another using a transaction
+$fromUserId = 3;
+$toUserId = 5;
+$points = 10;
+
+$success = false;
+$message = '';
+
+try {
+    // Begin the transaction
+    $db->transactionBegin();
+
+    // Deduct points from the first user
+    $values = ['status' => 'inactive'];
+    $where = ['id' => $fromUserId];
+    $db->update('users', $values, $where);
+
+    // Add points to the second user
+    $values = ['status' => 'active'];
+    $where = ['id' => $toUserId];
+    $db->update('users', $values, $where);
+
+    // Commit the transaction if everything is successful
+    $db->transactionCommit();
+
+    $success = true;
+    $message = "Transaction completed successfully! User $fromUserId status changed to inactive, User $toUserId status changed to active.";
+} catch (Exception $e) {
+    // Rollback the transaction if something went wrong
+    $db->transactionRollback();
+
+    $message = "Transaction failed and rolled back: " . $e->getMessage();
+}
+</code></pre>
+
+        <button class="btn btn-primary dropdown-toggle mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#phpOutput-3" aria-expanded="false" aria-controls="phpOutput-3">
+            Show / Hide the result
+        </button>
+
+        <div class="collapse mt-3" id="phpOutput-3">
+            <div class="card card-body <?php echo $success ? 'bg-success-subtle' : 'bg-danger-subtle'; ?>">
+                <?php echo htmlspecialchars($message); ?>
+            </div>
+        </div>
+    </article>
+
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

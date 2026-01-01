@@ -30,7 +30,7 @@ if (defined('PHPUNIT_TESTSUITE_RUNNIG') || $_SERVER['REMOTE_ADDR'] == '127.0.0.1
     define('DB_HOST', 'localhost');
     define('DB_NAME', 'sampledatabase');
     define('DB_USER', 'root');
-    define('DB_PASS', 'Mysql');
+    define('DB_PASS', 'mysql');
     define('DB_PORT', '3306'); // leave empty to use the default port
     define('DB_CHARSET', 'utf8mb4'); // leave empty to use the default charset
 } else {
