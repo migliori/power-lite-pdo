@@ -829,9 +829,16 @@ class QueryBuilder
                     // register the COUNT(DISTINCT) values for numRows
                     if ($this->parameters->get('selectDistinct')) {
                         $numRowsQueryString .= 'DISTINCT ';
+                        // COUNT(DISTINCT f1, f2) is valid SQL
+                        $numRowsQueryString .= $this->fields;
+                    } else {
+                        /*
+                         * COUNT(f1, f2, ...) is invalid SQL in every driver.
+                         * Row counting must use COUNT(*) (COUNT(DISTINCT f1, f2)
+                         * remains valid in the DISTINCT branch above).
+                         */
+                        $numRowsQueryString = '*';
                     }
-
-                    $numRowsQueryString .= $this->fields;
                 } elseif ($this->queryType === 'RAW') {
                     $numRowsQueryString = $out[1];
                 }

@@ -43,7 +43,11 @@ class Where
             $output = [];
 
             // remove any empty values
-            $where = array_filter($where);
+            // preserve 0 / '0' / 0.0 (falsy values are valid WHERE conditions),
+            // drop '' and null (empty filters must not constrain queries)
+            $where = array_filter($where, static function ($v) {
+                return $v !== '' && $v !== null;
+            });
 
             // loop through the array
             foreach ($where as $key => $value) {
