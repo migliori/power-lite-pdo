@@ -49,8 +49,18 @@ class Firebird extends DriverBase
             $dsn .= 'dbname=' . $dsnParams['dbname'] . ';';
         }
 
+        // Firebird does not understand MySQL-flavored charset names:
+        // translate them to the Firebird equivalent before building the DSN
         if (!empty($dsnParams['charset'])) {
-            $dsn .= 'charset=' . $dsnParams['charset'] . ';';
+            $firebirdCharsets = [
+                'utf8' => 'UTF8',
+                'utf8mb3' => 'UTF8',
+                'utf8mb4' => 'UTF8',
+                'latin1' => 'ISO8859_1',
+                'latin2' => 'ISO8859_2'
+            ];
+            $charset = $firebirdCharsets[strtolower($dsnParams['charset'])] ?? $dsnParams['charset'];
+            $dsn .= 'charset=' . $charset . ';';
         }
 
         try {
