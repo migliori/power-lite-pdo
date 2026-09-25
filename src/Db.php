@@ -254,13 +254,18 @@ class Db
         if (is_array($fields)) {
             // Build the COUNT queries with aliases
             foreach ($fields as $key => $value) {
-                $countFields[] = 'COUNT(' . $key . ') AS ' . $value;
+                // Quote the alias to preserve its case: unquoted identifiers are
+                // folded by some SQL engines (PostgreSQL to lowercase, Firebird and
+                // Oracle to uppercase), which would break consumers reading the
+                // property with its original case, e.g. Pagination::$row->rowsCount
+                $countFields[] = 'COUNT(' . $key . ') AS "' . $value . '"';
             }
         } else { // It's a string
             // field AS f, field2 AS f2, DISTINCT fielf3 AS f3
             $str_fields = explode(', ', $fields);
             foreach ($str_fields as $str_field) {
-                $countFields[] = 'COUNT(' . str_replace(' AS ', ') AS ', $str_field);
+                // Same quoting as the array branch above
+                $countFields[] = 'COUNT(' . str_replace(' AS ', ') AS "', $str_field) . '"';
             }
         }
 
