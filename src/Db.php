@@ -8,7 +8,10 @@ use PDO;
 use Exception;
 use Migliori\PowerLitePdo\Driver\DriverBase;
 use Migliori\PowerLitePdo\Exception\DbException;
+use Migliori\PowerLitePdo\Query\Parameters;
 use Migliori\PowerLitePdo\Query\QueryBuilder;
+use Migliori\PowerLitePdo\Query\Where;
+use Migliori\PowerLitePdo\Result\Result;
 use Migliori\PowerLitePdo\View\View;
 
 /**
@@ -60,6 +63,34 @@ class Db
         $this->connection   = $driverBase;
         $this->pdo          = $driverBase->getPdo();
         $this->queryBuilder = $queryBuilder;
+    }
+
+    /**
+     * Static factory: builds a fully wired Db instance for arbitrary credentials.
+     *
+     * Assembles the driver, connects and wires a QueryBuilder in a single call.
+     * Useful when the credentials differ from the ones defined in connection.php
+     * (installers, connection testers, multi-database applications, etc.).
+     *
+     * @param array<string, mixed> $dsn The DSN parameters (host, port, dbname, charset, ...).
+     * @param string $username The database username.
+     * @param string $password The database password.
+     * @param string|null $driver Optional driver name ('mysql', 'pgsql', 'firebird', 'oci').
+     *              Defaults to the PDO_DRIVER constant if defined, otherwise 'mysql'.
+     * @return static A ready-to-use Db instance.
+     */
+    public static function create(
+        array $dsn,
+        string $username = '',
+        string $password = '',
+        ?string $driver = null
+    ): static {
+        $driverName = $driver ?? (defined('PDO_DRIVER') ? PDO_DRIVER : 'mysql');
+        $driverBase = DriverManager::getConnection($driverName);
+        $connection = $driverBase->connect($dsn, $username, $password);
+        $queryBuilder = new QueryBuilder($connection, new Where(), new Parameters(), new Result());
+
+        return new static($connection, $queryBuilder);
     }
 
     /**

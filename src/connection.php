@@ -23,22 +23,51 @@ PDO_4D          4d                   4D
 */
 
 // DSN parameter of PDO::__construct()
-define('PDO_DRIVER', 'mysql');
+// Every define() below is guarded with if (!defined()) so this file stays silent when
+// the host application has already declared the constants (own connection file loaded first).
+if (!defined('PDO_DRIVER')) {
+    define('PDO_DRIVER', 'mysql');
+}
 
-if (defined('PHPUNIT_TESTSUITE_RUNNIG') || $_SERVER['REMOTE_ADDR'] == '127.0.0.1' || $_SERVER['REMOTE_ADDR'] == '::1') {
+$remoteAddr = $_SERVER['REMOTE_ADDR'] ?? '';
+if (defined('PHPUNIT_TESTSUITE_RUNNIG') || $remoteAddr == '127.0.0.1' || $remoteAddr == '::1') {
     // settings for local server
-    define('DB_HOST', 'localhost');
-    define('DB_NAME', 'sampledatabase');
-    define('DB_USER', 'root');
-    define('DB_PASS', 'mysql');
-    define('DB_PORT', '3306'); // leave empty to use the default port
-    define('DB_CHARSET', 'utf8mb4'); // leave empty to use the default charset
+    if (!defined('DB_HOST')) {
+        define('DB_HOST', 'localhost');
+    }
+    if (!defined('DB_NAME')) {
+        define('DB_NAME', 'sampledatabase');
+    }
+    if (!defined('DB_USER')) {
+        define('DB_USER', 'root');
+    }
+    if (!defined('DB_PASS')) {
+        define('DB_PASS', 'mysql');
+    }
+    if (!defined('DB_PORT')) {
+        define('DB_PORT', '3306'); // leave empty to use the default port
+    }
+    if (!defined('DB_CHARSET')) {
+        define('DB_CHARSET', 'utf8mb4'); // leave empty to use the default charset
+    }
 } else {
     // settings for production server
-    define('DB_HOST', 'production-db_host');
-    define('DB_NAME', 'production-db_name');
-    define('DB_USER', 'production-db_user');
-    define('DB_PASS', 'production-db_pass');
-    define('DB_PORT', 'production-db_port'); // leave empty to use the default port
-    define('DB_CHARSET', 'utf8mb4'); // leave empty to use the default charset
+    if (!defined('DB_HOST')) {
+        define('DB_HOST', 'production-db_host');
+    }
+    if (!defined('DB_NAME')) {
+        define('DB_NAME', 'production-db_name');
+    }
+    if (!defined('DB_USER')) {
+        define('DB_USER', 'production-db_user');
+    }
+    if (!defined('DB_PASS')) {
+        define('DB_PASS', 'production-db_pass');
+    }
+    if (!defined('DB_PORT')) {
+        define('DB_PORT', 'production-db_port'); // leave empty to use the default port
+    }
+    if (!defined('DB_CHARSET')) {
+        define('DB_CHARSET', 'utf8mb4'); // leave empty to use the default charset
+    }
 }
