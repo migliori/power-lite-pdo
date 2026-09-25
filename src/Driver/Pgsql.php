@@ -49,8 +49,11 @@ class Pgsql extends DriverBase
             $dsn .= 'dbname=' . $dsnParams['dbname'] . ';';
         }
 
+        // PDO pgsql DSN does not support the "charset" option (unlike mysql):
+        // the client encoding is set after connection with SET NAMES instead
+        $charset = '';
         if (!empty($dsnParams['charset'])) {
-            $dsn .= 'charset=' . $dsnParams['charset'] . ';';
+            $charset = $dsnParams['charset'];
         }
 
         try {
@@ -62,6 +65,20 @@ class Pgsql extends DriverBase
 
             // Set the PDO error mode to exception
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            if ($charset !== '') {
+                // translate MySQL-flavored charset names to PostgreSQL encodings
+                $postgresqlCharsets = [
+                    'utf8' => 'UTF8',
+                    'utf8mb3' => 'UTF8',
+                    'utf8mb4' => 'UTF8',
+                    'latin1' => 'LATIN1',
+                    'latin2' => 'LATIN2',
+                    'latin9' => 'LATIN9'
+                ];
+                $encoding = $postgresqlCharsets[strtolower($charset)] ?? strtoupper($charset);
+                $this->pdo->exec('SET NAMES ' . $this->pdo->quote($encoding));
+            }
         } catch (PDOException $pdoException) {
             // Throw the appropriate exception
             throw new DriverException($pdoException);

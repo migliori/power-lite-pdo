@@ -241,6 +241,14 @@ class Db
         array $parameters = [],
         $debug = false
     ) {
+        // A COUNT query never needs ORDER BY: keeping it would make strict
+        // SQL engines (PostgreSQL, Firebird) fail with a grouping error when
+        // the ORDER BY column is not part of the aggregate (e.g. Pagination
+        // calls selectCount with the list orderBy still set in $parameters)
+        if (array_key_exists('orderBy', $parameters)) {
+            unset($parameters['orderBy']);
+        }
+
         $countFields = [];
         // If the fields are in an array
         if (is_array($fields)) {
