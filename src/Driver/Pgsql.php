@@ -109,7 +109,9 @@ class Pgsql extends DriverBase
             throw new Exception('The database connection is not established');
         }
 
-        return 'SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = ' . trim($table) . ' ORDER BY ordinal_position';
+        // quote the table name as a literal string: an unquoted name would be
+        // interpreted as a column/identifier reference and fail (SQLSTATE 42703)
+        return 'SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = ' . $this->pdo->quote(trim($table)) . ' ORDER BY ordinal_position';
     }
 
     /**

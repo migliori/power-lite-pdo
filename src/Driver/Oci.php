@@ -96,7 +96,9 @@ class Oci extends DriverBase
             throw new Exception('The database connection is not established');
         }
 
-        return 'SELECT * FROM USER_TAB_COLUMNS WHERE TABLE_NAME = ' . trim($table);
+        // quote the table name as a literal string: an unquoted name would be
+        // interpreted as an identifier reference and fail
+        return 'SELECT * FROM USER_TAB_COLUMNS WHERE TABLE_NAME = ' . $this->pdo->quote(trim($table));
     }
 
     /**

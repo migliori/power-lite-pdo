@@ -132,7 +132,7 @@ class Firebird extends DriverBase
         RDB$FIELDS F
         LEFT JOIN RDB$RELATION_FIELDS R ON R.RDB$FIELD_SOURCE = F.RDB$FIELD_NAME
         LEFT JOIN RDB$CHARACTER_SETS RCS ON RCS.RDB$CHARACTER_SET_ID = F.RDB$CHARACTER_SET_ID
-    WHERE RDB$RELATION_NAME = ' . trim(\strtoupper($table)) . ' ORDER BY R.RDB$FIELD_POSITION';
+    WHERE RDB$RELATION_NAME = ' . $this->pdo->quote(strtoupper(trim($table))) . ' ORDER BY R.RDB$FIELD_POSITION';
     }
 
     /**
