@@ -823,6 +823,19 @@ class QueryBuilder
                 // will send a SELECT COUNT query
                 $useSelectCount = true;
 
+                /*
+                 * Remove the ORDER BY clause from the FROM part before
+                 * assembling the COUNT query: the original ORDER BY always
+                 * ends the matched FROM part and must not leak into the
+                 * COUNT query. Stripping it from the assembled SQL instead
+                 * would truncate the derived-table form below, whose FROM
+                 * part is wrapped in parentheses with a trailing alias.
+                 */
+                $fromPart = $out[2];
+                if (preg_match('/(.*)\s+ORDER BY\s+(?:.*)$/i', $fromPart, $orderByOut)) {
+                    $fromPart = rtrim($orderByOut[1]);
+                }
+
                 if ($this->queryType === 'SELECT') {
                     // register the COUNT(DISTINCT) values for numRows
                     if ($this->parameters->get('selectDistinct')) {
@@ -840,10 +853,10 @@ class QueryBuilder
                              */
                             $sql = 'SELECT COUNT(*) AS "row_count" FROM (SELECT DISTINCT '
                                 . $this->fields
-                                . ' FROM ' . $out[2] . ') power_lite_pdo_numrows';
+                                . ' FROM ' . $fromPart . ') power_lite_pdo_numrows';
                         } else {
                             // COUNT(DISTINCT f1) is valid in every driver
-                            $sql = 'SELECT COUNT(DISTINCT ' . $this->fields . ') AS "row_count" FROM ' . $out[2];
+                            $sql = 'SELECT COUNT(DISTINCT ' . $this->fields . ') AS "row_count" FROM ' . $fromPart;
                         }
                     } else {
                         /*
@@ -851,17 +864,12 @@ class QueryBuilder
                          * Row counting must use COUNT(*) (COUNT(DISTINCT f1)
                          * remains valid in the DISTINCT branch above).
                          */
-                        $sql = 'SELECT COUNT(*) AS "row_count" FROM ' . $out[2];
+                        $sql = 'SELECT COUNT(*) AS "row_count" FROM ' . $fromPart;
                     }
                 } elseif ($this->queryType === 'RAW') {
-                    $sql = 'SELECT COUNT(' . $out[1] . ') AS "row_count" FROM ' . $out[2];
+                    $sql = 'SELECT COUNT(' . $out[1] . ') AS "row_count" FROM ' . $fromPart;
                 } else {
-                    $sql = 'SELECT COUNT(*) AS "row_count" FROM ' . $out[2];
-                }
-
-                // Remove the ORDER BY clause
-                if (preg_match('/(.*) ORDER BY (?:.*)$/i', $sql, $out)) {
-                    $sql = $out[1];
+                    $sql = 'SELECT COUNT(*) AS "row_count" FROM ' . $fromPart;
                 }
             }
 

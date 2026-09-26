@@ -5,6 +5,10 @@ All notable changes to the "power-lite-pdo" library will be documented in this f
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## v1.3.5
+
+- Fix `QueryBuilder::numRows()` regression introduced in v1.3.4: the ORDER BY clause was stripped from the assembled COUNT query AFTER building it, which truncated the derived-table form (`... FROM (SELECT DISTINCT f1, f2 FROM joins) alias` lost its closing parenthesis and alias when the data query had an ORDER BY). The ORDER BY is now stripped from the captured FROM part BEFORE assembling the COUNT query, for every branch (SELECT, RAW, fallback)
+
 ## v1.3.4
 
 - Fix `QueryBuilder::numRows()` for `SELECT DISTINCT` on multiple fields: `COUNT(DISTINCT f1, f2, ...)` is valid in MySQL only — PostgreSQL, Oracle and Firebird reject it (SQLSTATE 42883 on PostgreSQL). The portable form counts the rows of a `SELECT DISTINCT` derived table, which also matches the actual data query semantics (rows containing NULLs are now counted as returned by the data query, while MySQL's multi-field `COUNT(DISTINCT ...)` silently skipped them). Single-field `DISTINCT` keeps using `COUNT(DISTINCT f1)`, valid in every driver. The derived-table alias omits the `AS` keyword, unsupported for table aliases in Oracle and Firebird
