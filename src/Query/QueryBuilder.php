@@ -823,27 +823,41 @@ class QueryBuilder
                 // will send a SELECT COUNT query
                 $useSelectCount = true;
 
-                $numRowsQueryString = '*';
                 if ($this->queryType === 'SELECT') {
-                    $numRowsQueryString = '';
                     // register the COUNT(DISTINCT) values for numRows
                     if ($this->parameters->get('selectDistinct')) {
-                        $numRowsQueryString .= 'DISTINCT ';
-                        // COUNT(DISTINCT f1, f2) is valid SQL
-                        $numRowsQueryString .= $this->fields;
+                        if (str_contains($this->fields, ',')) {
+                            /*
+                             * COUNT(DISTINCT f1, f2, ...) is valid in MySQL only.
+                             * PostgreSQL, Oracle and Firebird reject it (SQLSTATE 42883
+                             * on PostgreSQL: no function matches count(integer, ...)).
+                             * The portable equivalent counts the rows of a DISTINCT
+                             * derived table, which also matches the actual data query
+                             * semantics (SELECT DISTINCT returns rows containing NULLs
+                             * while MySQL's COUNT(DISTINCT ...) silently skips them).
+                             * The derived table alias must not use the AS keyword
+                             * (unsupported for table aliases in Oracle and Firebird).
+                             */
+                            $sql = 'SELECT COUNT(*) AS "row_count" FROM (SELECT DISTINCT '
+                                . $this->fields
+                                . ' FROM ' . $out[2] . ') power_lite_pdo_numrows';
+                        } else {
+                            // COUNT(DISTINCT f1) is valid in every driver
+                            $sql = 'SELECT COUNT(DISTINCT ' . $this->fields . ') AS "row_count" FROM ' . $out[2];
+                        }
                     } else {
                         /*
                          * COUNT(f1, f2, ...) is invalid SQL in every driver.
-                         * Row counting must use COUNT(*) (COUNT(DISTINCT f1, f2)
+                         * Row counting must use COUNT(*) (COUNT(DISTINCT f1)
                          * remains valid in the DISTINCT branch above).
                          */
-                        $numRowsQueryString = '*';
+                        $sql = 'SELECT COUNT(*) AS "row_count" FROM ' . $out[2];
                     }
                 } elseif ($this->queryType === 'RAW') {
-                    $numRowsQueryString = $out[1];
+                    $sql = 'SELECT COUNT(' . $out[1] . ') AS "row_count" FROM ' . $out[2];
+                } else {
+                    $sql = 'SELECT COUNT(*) AS "row_count" FROM ' . $out[2];
                 }
-
-                $sql = 'SELECT COUNT(' . $numRowsQueryString . ') AS "row_count" FROM ' . $out[2];
 
                 // Remove the ORDER BY clause
                 if (preg_match('/(.*) ORDER BY (?:.*)$/i', $sql, $out)) {

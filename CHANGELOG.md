@@ -5,6 +5,11 @@ All notable changes to the "power-lite-pdo" library will be documented in this f
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## v1.3.4
+
+- Fix `QueryBuilder::numRows()` for `SELECT DISTINCT` on multiple fields: `COUNT(DISTINCT f1, f2, ...)` is valid in MySQL only — PostgreSQL, Oracle and Firebird reject it (SQLSTATE 42883 on PostgreSQL). The portable form counts the rows of a `SELECT DISTINCT` derived table, which also matches the actual data query semantics (rows containing NULLs are now counted as returned by the data query, while MySQL's multi-field `COUNT(DISTINCT ...)` silently skipped them). Single-field `DISTINCT` keeps using `COUNT(DISTINCT f1)`, valid in every driver. The derived-table alias omits the `AS` keyword, unsupported for table aliases in Oracle and Firebird
+- Update stale `version` field in composer.json to match the released tags (1.3.4)
+
 ## v1.3.0
 
 - Add `Db::create(array $dsn, string $username = '', string $password = '', ?string $driver = null): static` static factory: assembles the driver, connects and wires a QueryBuilder in a single call for arbitrary credentials (installers, connection testers, multi-database applications). Defaults to the PDO_DRIVER constant, or 'mysql'
