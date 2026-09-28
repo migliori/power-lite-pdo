@@ -33,6 +33,27 @@ class Result
     }
 
     /**
+     * Destructor: closes the cursor if a statement is still holding an open result set.
+     *
+     * Without this, a PDO_OCI statement whose cursor is still open (rows pending) is
+     * implicitly freed during PHP shutdown, which can trigger an access violation
+     * (php-cgi.exe crash, 0xc0000005 in KERNELBASE.dll on Windows) depending on the
+     * object destruction order in the host application. Closing the cursor explicitly
+     * here converts that implicit free into a clean, deterministic release.
+     */
+    public function __destruct()
+    {
+        if ($this->pdoStatement instanceof PDOStatement) {
+            try {
+                $this->pdoStatement->closeCursor();
+            } catch (\Throwable $e) {
+                // Never let a cursor close failure break the shutdown sequence
+            }
+            $this->pdoStatement = null;
+        }
+    }
+
+    /**
      * Fetches the next row from a result set and returns it according to the $fetch_parameters format
      *
      * @param int $fetch_parameters The PDO fetch style record options
@@ -44,7 +65,19 @@ class Result
             return false;
         }
 
-        return $this->pdoStatement->fetch($fetch_parameters);
+        $row = $this->pdoStatement->fetch($fetch_parameters);
+
+        // EOF reached: close the cursor deterministically so the statement
+        // no longer holds an open result set (see __destruct for why)
+        if ($row === false) {
+            try {
+                $this->pdoStatement->closeCursor();
+            } catch (\Throwable $e) {
+                // Ignore: the statement will be released anyway
+            }
+        }
+
+        return $row;
     }
 
     /**

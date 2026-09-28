@@ -5,6 +5,10 @@ All notable changes to the "power-lite-pdo" library will be documented in this f
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## v1.3.6
+
+- Fix php-cgi.exe crash (0xc0000005 in KERNELBASE.dll on Windows) at request shutdown with PDO_OCI: a statement holding an open OCI cursor (partial fetch, rows pending) that was freed during shutdown could trigger an access violation depending on the object destruction order in the host application. `Result::fetch()` now closes the cursor deterministically when EOF is reached, and a `Result::__destruct()` closes any remaining open cursor as a safety net
+
 ## v1.3.5
 
 - Fix `QueryBuilder::numRows()` regression introduced in v1.3.4: the ORDER BY clause was stripped from the assembled COUNT query AFTER building it, which truncated the derived-table form (`... FROM (SELECT DISTINCT f1, f2 FROM joins) alias` lost its closing parenthesis and alias when the data query had an ORDER BY). The ORDER BY is now stripped from the captured FROM part BEFORE assembling the COUNT query, for every branch (SELECT, RAW, fallback)
