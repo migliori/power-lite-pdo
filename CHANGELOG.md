@@ -5,6 +5,11 @@ All notable changes to the "power-lite-pdo" library will be documented in this f
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## v1.4.0
+
+- Add case-insensitive search: the `ILIKE` and `NOT ILIKE` operators are now supported in WHERE conditions and translated per driver. PostgreSQL uses its native `ILIKE` operator; Firebird and Oracle get `UPPER(field) LIKE UPPER(value)` (the search value is uppercased automatically for string values); MySQL and other drivers fall back to `LIKE` (case-insensitive with the default `_ci` collations). Usage: `$where['first_name ILIKE'] = '%pen%';` — works everywhere PHP CRUD Generator supports a database driver, no schema or query rewrite needed
+- `QueryBuilder` now shares the connected driver name with its `Where` builder (new `Where::setDriver()`), so operator translation follows the actual connection whatever the DI wiring (`Db::class`, `QueryBuilder::class`, `Pagination::class` factories or `Db::create()`)
+
 ## v1.3.6
 
 - Fix php-cgi.exe crash (0xc0000005 in KERNELBASE.dll on Windows) at request shutdown with PDO_OCI: a statement holding an open OCI cursor (partial fetch, rows pending) that was freed during shutdown could trigger an access violation depending on the object destruction order in the host application. `Result::fetch()` now closes the cursor deterministically when EOF is reached, and a `Result::__destruct()` closes any remaining open cursor as a safety net

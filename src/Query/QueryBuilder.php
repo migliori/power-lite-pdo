@@ -93,6 +93,8 @@ class QueryBuilder
         $this->where      = $where;
         $this->parameters = $parameters;
         $this->result     = $result;
+        // share the driver name with the WHERE builder (ILIKE operator translation)
+        $where->setDriver($driverBase->getDriver());
     }
 
     public function query(string $sql): self
